@@ -245,13 +245,13 @@ body,
   height: 100%;
 }
 body {
-  color: #2AA198;
-  background: #DBEAF2;
+  color: #565a5f;
+  background: #f3f8fb;
   font: 14px "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif;
   -webkit-text-size-adjust: 100%;
 }
 a {
-  color: #989898;
+  color: #2AA198;
   text-decoration: none;
 }
 a:visited {
@@ -779,9 +779,9 @@ code {
 }
 #profile .inner .base-info #avatar {
   display: block;
-  margin: 10px auto 20px;
-  width: 128px;
-  height: 128px;
+  margin: 5px auto 5px;
+  width: 200px;
+  height: 200px;
 }
 #profile .inner .base-info #name,
 #profile .inner .base-info #title,
@@ -790,7 +790,7 @@ code {
   text-align: center;
 }
 #profile .inner .base-info #name {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 600;
 }
 #profile .inner .base-info #location {
@@ -810,7 +810,7 @@ code {
   line-height: 40px;
   text-align: center;
   margin: 20px auto 10px;
-  background: #38b7ea;
+  background: #2AA198;
   -webkit-border-radius: 20px;
   border-radius: 20px;
   -webkit-transition: 0.2s ease;
@@ -819,7 +819,7 @@ code {
   transition: 0.2s ease;
 }
 #profile .inner .base-info #follow:hover {
-  background: #49c8fb;
+  background: #989898;
 }
 #profile .inner .article-info {
   padding: 0px;
@@ -944,15 +944,15 @@ code {
 }
 .article-title {
   font-size: 2em;
-  color: #565a5f;
+  color: #2AA198;
   text-decoration: none;
   line-height: 1.3em;
 }
 a.article-title:visited {
-  color: #565a5f;
+  color: #2AA198;
 }
 a.article-title:hover {
-  color: #38b7ea;
+  color: #989898;
 }
 @media screen and (max-width: 559px) {
   .article-title {
@@ -983,10 +983,10 @@ a.article-title:hover {
   margin-right: 3px;
 }
 .article-meta a {
-  color: #565a5f;
+  color: #2AA198;
 }
 .article-meta a:hover {
-  color: #38b7ea;
+  color: #989898;
 }
 .article-category .fa-angle-right {
   margin: 0 5px;
@@ -995,7 +995,7 @@ a.article-title:hover {
   content: "#";
 }
 .article-entry {
-  color: #565a5f;
+  color: #2AA198;
   padding: 0 20px;
   line-height: 1.6em;
 }
@@ -1030,7 +1030,7 @@ a.article-title:hover {
   margin: 1.3em 0;
 }
 .article-entry a {
-  color: #38b7ea;
+  color: #2AA198;
   text-decoration: none;
 }
 .article-entry a:hover {
