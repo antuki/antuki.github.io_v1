@@ -30,16 +30,5 @@
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
     
-    <item>
-      <title>Using the gallery shortcode</title>
-      <link>//antuki.github.io/articles/using-the-gallery-shortcode/</link>
-      <pubDate>Wed, 01 May 2002 00:00:00 +0000</pubDate>
-      
-      <guid>//antuki.github.io/articles/using-the-gallery-shortcode/</guid>
-      <description>&lt;p&gt;This way you can easily include a gallery into your page. Copy the code below into your content file and enter the relative paths to your images.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
   </channel>
 </rss>

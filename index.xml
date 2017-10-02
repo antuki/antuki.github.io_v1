@@ -31,14 +31,15 @@
     </item>
     
     <item>
-      <title>Using the gallery shortcode</title>
-      <link>//antuki.github.io/articles/using-the-gallery-shortcode/</link>
-      <pubDate>Wed, 01 May 2002 00:00:00 +0000</pubDate>
+      <title>À propos</title>
+      <link>//antuki.github.io/apropos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>//antuki.github.io/articles/using-the-gallery-shortcode/</guid>
-      <description>&lt;p&gt;This way you can easily include a gallery into your page. Copy the code below into your content file and enter the relative paths to your images.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>//antuki.github.io/apropos/</guid>
+      <description>© croquis de Bénédicte Roullier
+Bonjour !
+Je m&amp;rsquo;appelle Kim, je suis statisticienne et j&amp;rsquo;aime beaucoup faire du R à mes heures perdues.
+Ce blog a pour vocation de partager avec vous mes découvertes en stats et logiciels stats au fil du temps (certaines périodes étant certainement plus propices à la découverte que d&amp;rsquo;autres). Je compte, entre autres, faire de la pub aux développeurs et chercheurs qui attireront mon attention grâce à leurs packages super cools et vous indiquer comment récupérer des données sympas à manipuler !</description>
     </item>
     
   </channel>
