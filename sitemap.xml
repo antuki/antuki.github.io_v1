@@ -3,16 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>//antuki.github.io/packages/</loc>
-    <lastmod>2017-05-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>//antuki.github.io/apropos/</loc>
-    <lastmod>2017-05-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>//antuki.github.io/articles/githubmd/</loc>
     <lastmod>2016-12-25T00:00:00+00:00</lastmod>
   </url>
@@ -32,6 +22,10 @@
     <loc>//antuki.github.io/tags/open-data-et-open-source/</loc>
     <lastmod>2016-12-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>//antuki.github.io/packages/</loc>
   </url>
   
   <url>

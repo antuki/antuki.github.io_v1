@@ -245,17 +245,17 @@ body,
   height: 100%;
 }
 body {
-  color: #565a5f;
-  background: #DCFEFA;
+  color: #2AA198;
+  background: #DBEAF2;
   font: 14px "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif;
   -webkit-text-size-adjust: 100%;
 }
 a {
-  color: #38b7ea;
+  color: #989898;
   text-decoration: none;
 }
 a:visited {
-  color: #38b7ea;
+  color: #989898;
 }
 code {
   margin: 0 2px;
