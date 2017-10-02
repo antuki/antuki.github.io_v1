@@ -3,33 +3,29 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>//antuki.github.io/post/markdown-cheat-sheet/</loc>
-    <lastmod>2017-05-20T12:10:51+02:00</lastmod>
+    <loc>//antuki.github.io/packages/</loc>
+    <lastmod>2017-05-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>//antuki.github.io/post/using-the-gallery-shortcode/</loc>
-    <lastmod>2017-05-20T12:00:23+02:00</lastmod>
+    <loc>//antuki.github.io/apropos/</loc>
+    <lastmod>2017-05-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>//antuki.github.io/post/formulas-with-mathjax/</loc>
-    <lastmod>2017-05-20T11:58:06+02:00</lastmod>
+    <loc>//antuki.github.io/articles/githubmd/</loc>
+    <lastmod>2016-12-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>//antuki.github.io/about/</loc>
-    <lastmod>2017-05-19T21:49:20+02:00</lastmod>
+    <loc>//antuki.github.io/articles/using-the-gallery-shortcode/</loc>
+    <lastmod>2002-05-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>//antuki.github.io/post/linked-post/</loc>
-    <lastmod>2015-10-02T21:49:20+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>//antuki.github.io/post/2015-07-23-r-rmarkdown/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <loc>//antuki.github.io/articles/</loc>
+    <lastmod>2016-12-25T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -38,80 +34,20 @@
   </url>
   
   <url>
-    <loc>//antuki.github.io/tags/golang/</loc>
-    <lastmod>2015-10-02T21:49:20+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//antuki.github.io/tags/hugo/</loc>
-    <lastmod>2015-10-02T21:49:20+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//antuki.github.io/tags/markdown/</loc>
-    <lastmod>2017-05-20T12:10:51+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//antuki.github.io/tags/plot/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//antuki.github.io/post/</loc>
-    <lastmod>2017-05-20T12:10:51+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//antuki.github.io/categories/programming/</loc>
-    <lastmod>2015-10-02T21:49:20+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//antuki.github.io/tags/programming/</loc>
-    <lastmod>2015-10-02T21:49:20+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//antuki.github.io/categories/r/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//antuki.github.io/tags/r-markdown/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//antuki.github.io/tags/regression/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <loc>//antuki.github.io/tags/open-data-et-open-source/</loc>
+    <lastmod>2016-12-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>//antuki.github.io/tags/</loc>
-    <lastmod>2015-10-02T21:49:20+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//antuki.github.io/tags/theme/</loc>
-    <lastmod>2015-10-02T21:49:20+02:00</lastmod>
+    <lastmod>2016-12-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>//antuki.github.io/</loc>
-    <lastmod>2017-05-20T12:10:51+02:00</lastmod>
+    <lastmod>2016-12-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

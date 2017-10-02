@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Post on antuki.github.io</title>
-    <link>//antuki.github.io/post/</link>
-    <description>Recent content in Post on antuki.github.io</description>
+    <title>Open data et open source on antuki.github.io</title>
+    <link>//antuki.github.io/tags/open-data-et-open-source/</link>
+    <description>Recent content in Open data et open source on antuki.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
     <copyright>antuki. Powered by [blogdown](https://github.com/rstudio/blogdown)/[Hugo](//gohugo.io). Theme based on Icarus by [PPOffice](http://github.com/ppoffice).</copyright>
     <lastBuildDate>Sun, 25 Dec 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="//antuki.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//antuki.github.io/tags/open-data-et-open-source/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>À la découverte de GitHub</title>
-      <link>//antuki.github.io/post/githubmd/</link>
+      <link>//antuki.github.io/articles/githubmd/</link>
       <pubDate>Sun, 25 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>//antuki.github.io/post/githubmd/</guid>
+      <guid>//antuki.github.io/articles/githubmd/</guid>
       <description>&lt;p&gt;Sensible à l’open data et à l’open source, je me suis enfin lancée sur GitHub, un site web d’hébergement, de gestion et de développement de logiciels. Cette plateforme devrait me permettre :&lt;/p&gt;
 
 &lt;ul&gt;
@@ -26,17 +26,6 @@
 &lt;/ul&gt;
 
 &lt;p&gt;Cet article décrit rapidement les fonctionnalités de GitHub que j’ai pu découvrir pendant ces vacances de Noël. 🎄 🎁 🎅.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Using the gallery shortcode</title>
-      <link>//antuki.github.io/post/using-the-gallery-shortcode/</link>
-      <pubDate>Wed, 01 May 2002 00:00:00 +0000</pubDate>
-      
-      <guid>//antuki.github.io/post/using-the-gallery-shortcode/</guid>
-      <description>&lt;p&gt;This way you can easily include a gallery into your page. Copy the code below into your content file and enter the relative paths to your images.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>

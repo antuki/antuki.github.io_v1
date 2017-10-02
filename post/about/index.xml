@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on antuki.github.io</title>
-    <link>//antuki.github.io/categories/</link>
-    <description>Recent content in Categories on antuki.github.io</description>
+    <title>À propos on antuki.github.io</title>
+    <link>//antuki.github.io/post/about/</link>
+    <description>Recent content in À propos on antuki.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
     <copyright>antuki. Powered by [blogdown](https://github.com/rstudio/blogdown)/[Hugo](//gohugo.io). Theme based on Icarus by [PPOffice](http://github.com/ppoffice).</copyright>
+    <lastBuildDate>Sat, 20 May 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="//antuki.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//antuki.github.io/post/about/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
