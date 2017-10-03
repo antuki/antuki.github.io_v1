@@ -1,12 +1,12 @@
 /*
-Code R à l'intérieur des articles
+Monokai style - ported by Luigi Maselli - http://grigio.org
 */
 
 .hljs {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  background: #f3f8fb;
+  background: #f8f8ff;
   -webkit-text-size-adjust: none;
 }
 
@@ -20,23 +20,24 @@ Code R à l'intérieur des articles
 .hljs-flow,
 .nginx .hljs-title,
 .tex .hljs-special {
-  color: #CB4B16;
+  color: #f92672;
 }
 
 .hljs {
-  color: #989898;
+  color: #ddd;
 }
 
 .hljs .hljs-constant,
 .asciidoc .hljs-code,
 .markdown .hljs-code {
-  color:#268BD2;
+  color: #66d9ef;
 }
 
 .hljs-code,
 .hljs-class .hljs-title,
 .hljs-header {
-  color: white;
+  color: #900;
+  font-weight: bold
 }
 
 .hljs-link_label,
@@ -45,7 +46,7 @@ Code R à l'intérieur des articles
 .hljs-symbol .hljs-string,
 .hljs-value,
 .hljs-regexp {
-  color: #2AA198;
+   color: #008080;
 }
 
 .hljs-link_url,
@@ -76,7 +77,8 @@ Code R à l'intérieur des articles
 .tex .hljs-command,
 .hljs-prompt,
 .hljs-name {
-  color:#859900;
+  color: #458;
+  font-weight: bold
 }
 
 .hljs-comment,
@@ -91,7 +93,8 @@ Code R à l'intérieur des articles
 .hljs-shebang,
 .apache .hljs-sqbracket,
 .tex .hljs-formula {
-  color:#586E75;
+  color: #998;
+  font-style: italic
 }
 
 .hljs-keyword,
@@ -122,7 +125,7 @@ Code R à l'intérieur des articles
 .xml .vbscript,
 .xml .css,
 .xml .hljs-cdata {
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 /* style.css */
@@ -333,7 +336,7 @@ code {
 .archive-article-header a:visited,
 .layout-wrap-inner.tag-cloud a:visited,
 .timeline-row .content h1 a:visited {
-  color: #565a5f;
+  color: #2AA198;
   -webkit-transition: 0.2s ease;
   -moz-transition: 0.2s ease;
   -ms-transition: 0.2s ease;
@@ -474,7 +477,7 @@ code {
   -moz-transition: 0.2s ease;
   -ms-transition: 0.2s ease;
   transition: 0.2s ease;
-  color: #989898;
+  color: #565a5f;
 }
 #header a:hover {
   color: #2AA198;
@@ -867,7 +870,7 @@ code {
   color: #898d92;
 }
 #profile .inner .social-links > table td a:hover {
-  color: #565a5f;
+  color: #2AA198;
 }
 #profile .inner .social-links > table td a.tooltip:hover:after {
   right: -50%;
