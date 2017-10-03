@@ -46,7 +46,7 @@ Monokai style - ported by Luigi Maselli - http://grigio.org
 .hljs-symbol .hljs-string,
 .hljs-value,
 .hljs-regexp {
-   color: #008080;
+   color: #000000;
 }
 
 .hljs-link_url,
@@ -77,7 +77,7 @@ Monokai style - ported by Luigi Maselli - http://grigio.org
 .tex .hljs-command,
 .hljs-prompt,
 .hljs-name {
-  color: #458;
+  color: #2AA198;
   font-weight: bold
 }
 
@@ -93,7 +93,7 @@ Monokai style - ported by Luigi Maselli - http://grigio.org
 .hljs-shebang,
 .apache .hljs-sqbracket,
 .tex .hljs-formula {
-  color: #000000;
+  color: #008080;
   font-style: italic
 }
 
