@@ -1168,11 +1168,11 @@ a.article-title:hover {
   clear: both;
 }
 .article-footer a {
-  color: #2AA198;
+  color: #989898 ;
   text-decoration: none;
 }
 .article-footer a:hover {
-  color: #565a5f;
+  color: #2AA198;
 }
 .article-comment-link {
   float: right;
