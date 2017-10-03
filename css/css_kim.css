@@ -999,7 +999,7 @@ a.article-title:hover {
   content: "#";
 }
 .article-entry {
-  color: #989898;
+  color: #666666;
   padding: 0 20px;
   line-height: 1.6em;
 }
@@ -1112,7 +1112,7 @@ a.article-title:hover {
   margin-left: 1em;
 }
 .article-entry .caption {
-  color: #999;
+  color: #666666;
   display: block;
   font-size: 0.9em;
   margin-top: 0.5em;
@@ -1147,10 +1147,10 @@ a.article-title:hover {
   text-decoration: none;
 }
 .article-more-link a:hover {
-  background: #38b7ea;
+  background: #2AA198;
   color: #fff;
   text-decoration: none;
-  text-shadow: 0 1px #169cd2;
+  text-shadow: 0 1px #1a655f;
 }
 .article-footer {
   font-size: 0.85em;
@@ -1168,7 +1168,7 @@ a.article-title:hover {
   clear: both;
 }
 .article-footer a {
-  color: #999;
+  color: #2AA198;
   text-decoration: none;
 }
 .article-footer a:hover {
@@ -1788,7 +1788,7 @@ ol.toc {
   margin-bottom: 0;
 }
 #footer a {
-  color: #38b7ea;
+  color: #2AA198;
   text-decoration: none;
 }
 #footer a:hover {
