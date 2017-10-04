@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
     <copyright>antuki. Powered by [blogdown](https://github.com/rstudio/blogdown)/[Hugo](//gohugo.io). Theme based on Icarus by [PPOffice](http://github.com/ppoffice).</copyright>
-    <lastBuildDate>Sun, 25 Jun 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Jun 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="//antuki.github.io/articles/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Code R2</title>
+      <link>//antuki.github.io/articles/2017-06-24_coder2/</link>
+      <pubDate>Mon, 26 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//antuki.github.io/articles/2017-06-24_coder2/</guid>
+      <description>pie(c(280, 60, 20),c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny&amp;#39;, &amp;#39;Shady&amp;#39;))</description>
+    </item>
     
     <item>
       <title>Code R</title>
@@ -18,9 +27,16 @@
       <pubDate>Sun, 25 Jun 2017 00:00:00 +0000</pubDate>
       
       <guid>//antuki.github.io/articles/2017-06-24_coder/</guid>
-      <description>TEXTE AVANT TEXTE AVANT
-TEXTE AVANT TEXTE AVANT
-par(mar = c(0, 1, 0, 1))pie(c(280, 60, 20),c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny side of pyramid&amp;#39;, &amp;#39;Shady side of pyramid&amp;#39;),col = c(&amp;#39;#0292D8&amp;#39;, &amp;#39;#F7EA39&amp;#39;, &amp;#39;#C4B632&amp;#39;),init.angle = -50, border = NA)### hello1+1## [1] 2TEXTE APRES</description>
+      <description>pie(c(280, 60, 20),c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny&amp;#39;, &amp;#39;Shady&amp;#39;))</description>
+    </item>
+    
+    <item>
+      <title>Code R3</title>
+      <link>//antuki.github.io/articles/2017-06-24_coder3/</link>
+      <pubDate>Sun, 25 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//antuki.github.io/articles/2017-06-24_coder3/</guid>
+      <description>pie(c(280, 60, 20),c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny&amp;#39;, &amp;#39;Shady&amp;#39;))HELLO</description>
     </item>
     
     <item>
