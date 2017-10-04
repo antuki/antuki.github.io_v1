@@ -32,7 +32,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-06-26T00:00:00&#43;00:00"/>
+<meta property="og:updated_time" content="2017-06-30T00:00:00&#43;00:00"/>
 
 
 
@@ -173,7 +173,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        3  
+        4  
         <span>Articles</span>
       </div>
       <div class="article-info-block">
@@ -265,6 +265,147 @@
         </a>
 
         <header class="article-header">
+    <a href="//antuki.github.io/articles/2017-06-24_coder/">
+    <h1 class="article-title" itemprop="name">
+        Code R
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2017-06-30 00:00:00 &#43;0000 UTC" itemprop="datePublished">2017-06-30</time>
+             
+            &middot;
+            1
+            minutes à perdre
+        </div>
+        
+        
+            
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="//antuki.github.io/tags/open-data-et-open-source">Open data et open source</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+          <p>
+
+
+
+<p>pie(c(280, 60, 20),c(&#39;Sky&#39;, &#39;Sunny&#39;, &#39;Shady&#39;))
+HELLO</p>
+
+<p>good bye ???</p>
+
+            </p>
+            <p class="article-more-link">
+                <a href="//antuki.github.io/articles/2017-06-24_coder/">
+                    En savoir plus...
+                </a>
+            </p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="//antuki.github.io/articles/2017-06-24_coder/" data-id="6a42f4eb9afeddd207a353ab5dd924d2" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Partager
+    </a>
+    
+    <a href="//antuki.github.io/articles/2017-06-24_coder/#disqus_thread" class="article-comment-link">
+        Commentaires
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+</article>
+
+<article class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        </a>
+
+        <header class="article-header">
     <a href="//antuki.github.io/articles/2017-06-24_coder2/">
     <h1 class="article-title" itemprop="name">
         Code R2
@@ -308,10 +449,8 @@
 
 
 
-<p><pre class="r"><code>pie(c(280, 60, 20),c(&#39;Sky&#39;, &#39;Sunny&#39;, &#39;Shady&#39;))</code></pre>
-<p><img src="//antuki.github.io/articles/2017-06-24_codeR2_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<p>HELLO</p></p>
-
+pie(c(280, 60, 20),c(&#39;Sky&#39;, &#39;Sunny&#39;, &#39;Shady&#39;))
+HELLO
             </p>
             <p class="article-more-link">
                 <a href="//antuki.github.io/articles/2017-06-24_coder2/">
@@ -448,7 +587,7 @@
 
 
 
-<p><pre class="r"><code>pie(c(280, 60, 20),c(&#39;Sky&#39;, &#39;Sunny&#39;, &#39;Shady&#39;))</code></pre><p><img src="//antuki.github.io/articles/2017-06-24_codeR2_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p><p>HELLO</p></p>
+<p><pre class="r"><code>pie(c(280, 60, 20),c(&#39;Sky&#39;, &#39;Sunny&#39;, &#39;Shady&#39;))</code></pre><p><img src="//antuki.github.io/articles/2017-06-24_codeR2_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p><p>Description !</p></p>
 
             </p>
             <p class="article-more-link">
@@ -597,14 +736,6 @@
 
 <p></p>
 
-<p>GitHub permet à tous de faire gratuitement du développement de manière collaborative (commentaires, suivi de personnes et de projets, gestion de versions grâce aux propositions d&rsquo;améliorations que l&rsquo;on peut faire aux développeurs de projets,&hellip;).</p>
-
-<p>Les documentations de projets et les pages web sont écrites en langage Markdown (fichiers .md) qu&rsquo;il est possible de générer sur le logiciel R grâce à la fonctionnalité <a href="http://rmarkdown.rstudio.com/">R Markdown</a>.</p>
-
-<p>Pour créer ce blog, j&rsquo;ai utilisé la fonctionnalité GitHub du fork. J&rsquo;ai « forké », c&rsquo;est-à-dire que j&rsquo;ai dupliqué, sur <a href="https://github.com/antuki/">mon compte GitHub</a> <a href="https://github.com/barryclark/jekyll-now">ce projet</a> pour ensuite l&rsquo;éditer et le modifier à ma façon en modifiant le code css. Pour se simplifier la vie, il est aussi possible d&rsquo;installer le logiciel <a href="https://jekyllrb.com/docs/installation/">Jekyll</a> fait pour ça. Plein d&rsquo;<a href="https://drjekyllthemes.github.io/">autres thèmes</a>  de type Jekyll sont également proposés sur le net. Il existe aussi plein de tutoriels pour vous aider <a href="http://andysouth.github.io/">en anglais</a>  et (un peu moins) <a href="http://www.nicoespeon.com/fr/2013/04/faire-son-blog-avec-jekyll/">en français</a> à créer votre propre blog voire site internet sur GitHub.</p>
-
-<p>Amusez-vous bien !</p>
-
             </p>
             <p class="article-more-link">
                 <a href="//antuki.github.io/articles/githubmd/">
@@ -721,7 +852,7 @@
                 <a class="category-list-link" href="//antuki.github.io/tags/open-data-et-open-source">
                     Open data et open source
                 </a>
-                <span class="category-list-count">3</span>
+                <span class="category-list-count">4</span>
             </li>
             
         </ul>

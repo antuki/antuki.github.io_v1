@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
     <copyright>antuki. Powered by [blogdown](https://github.com/rstudio/blogdown)/[Hugo](//gohugo.io). Theme based on Icarus by [PPOffice](http://github.com/ppoffice).</copyright>
-    <lastBuildDate>Mon, 26 Jun 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 Jun 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="//antuki.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Code R</title>
+      <link>//antuki.github.io/articles/2017-06-24_coder/</link>
+      <pubDate>Fri, 30 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//antuki.github.io/articles/2017-06-24_coder/</guid>
+      <description>pie(c(280, 60, 20),c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny&amp;#39;, &amp;#39;Shady&amp;#39;))HELLO
+good bye ???</description>
+    </item>
     
     <item>
       <title>Code R2</title>
@@ -27,8 +37,7 @@
       <pubDate>Sun, 25 Jun 2017 00:00:00 +0000</pubDate>
       
       <guid>//antuki.github.io/articles/2017-06-24_coder3/</guid>
-      <description>pie(c(280, 60, 20),c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny&amp;#39;, &amp;#39;Shady&amp;#39;))BYE
-HELLO</description>
+      <description>Autre contenu</description>
     </item>
     
     <item>
