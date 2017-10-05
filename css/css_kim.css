@@ -2289,3 +2289,34 @@ ol.toc {
   font-weight: bold;
 }
 
+/*ajouts Kim twitter block*/
+
+.twitterblock-block {
+  padding: 15px 20px;
+  border-bottom: 1px solid #eceff2;
+}
+.twitterblock-block:last-child {
+  border-bottom: none;
+}
+#twitterblock {
+  display: inline;
+  float: left;
+  width: 21.53846153846154%;
+  margin: 0 0.769230769230769%;
+  display: none;
+}
+@media screen and (min-width: 1200px) {
+  #twitterblock {
+    display: block;
+  }
+}
+#twitterblock .inner {
+  margin-top: 40px;
+  background: #fff;
+}
+
+#twitterblock .inner .printtweets {
+  width:100%
+ }
+
+/*ajouts Kim twitter block*/
