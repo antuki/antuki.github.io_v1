@@ -13,30 +13,12 @@
     
     
     <item>
-      <title>Code R</title>
+      <title>Code R :information_desk_person:</title>
       <link>//antuki.github.io/articles/2017-06-24_coder/</link>
       <pubDate>Fri, 30 Jun 2017 00:00:00 +0000</pubDate>
       
       <guid>//antuki.github.io/articles/2017-06-24_coder/</guid>
-      <description>pie(c(280, 60, 20),c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny&amp;#39;, &amp;#39;Shady&amp;#39;))J’ai réussi !!!</description>
-    </item>
-    
-    <item>
-      <title>Code R2</title>
-      <link>//antuki.github.io/articles/2017-06-24_coder2/</link>
-      <pubDate>Mon, 26 Jun 2017 00:00:00 +0000</pubDate>
-      
-      <guid>//antuki.github.io/articles/2017-06-24_coder2/</guid>
-      <description>COCOT</description>
-    </item>
-    
-    <item>
-      <title>Code R3</title>
-      <link>//antuki.github.io/articles/2017-06-24_coder3/</link>
-      <pubDate>Sun, 25 Jun 2017 00:00:00 +0000</pubDate>
-      
-      <guid>//antuki.github.io/articles/2017-06-24_coder3/</guid>
-      <description>Autre contenu</description>
+      <description>pie(c(280, 60, 20),c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny&amp;#39;, &amp;#39;Shady&amp;#39;))Ceci est un camembert.</description>
     </item>
     
     <item>
