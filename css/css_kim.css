@@ -2289,13 +2289,62 @@ ol.toc {
   font-weight: bold;
 }
 
+
+
 /*ajouts Kim twitter block*/
 
-.twitterblock {
+#twitterblock .inner,
+#toTop {
+  background: #fff;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+#sub-nav #twitterblock-nav #twitterblock-anchor {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+}
+#sub-nav #twitterblock-nav #twitterblock-anchor:before,
+#sub-nav #twitterblock-nav #twitterblock-anchor:after {
+  content: "";
+  display: table;
+}
+#sub-nav #twitterblock-nav #twitterblock-anchor:after {
+  clear: both;
+}
+#sub-nav #twitterblock-nav .avatar,
+#sub-nav #twitterblock-nav .fa {
+  float: left;
+}
+#sub-nav #twitterblock-nav .avatar {
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+}
+#sub-nav #twitterblock-nav .fa {
+  line-height: 40px;
+}
+@media screen and (max-width: 559px) {
+  #search-form-wrap {
+    display: none;
+  }
+}
+#twitterblock .inner .bio h2 {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-top: 15px;
+}
+#twitterblock .inner .bio p {
+  margin: 5px 20px 10px 20px;
+  text-align: justify;
+  max-width: 300px;
+  line-height: 1.5em;
+}
+.twitterblock-block {
   padding: 15px 20px;
   border-bottom: 1px solid #eceff2;
 }
-.twitterblock:last-child {
+.twitterblock-block:last-child {
   border-bottom: none;
 }
 #twitterblock {
@@ -2313,6 +2362,155 @@ ol.toc {
 #twitterblock .inner {
   margin-top: 40px;
   background: #fff;
+}
+#twitterblock .inner .base-info #avatar {
+  display: block;
+  margin: 5px auto 5px;
+  width: 200px;
+  height: 200px;
+}
+#twitterblock .inner .base-info #name,
+#twitterblock .inner .base-info #title,
+#twitterblock .inner .base-info #location {
+  display: block;
+  text-align: center;
+}
+#twitterblock .inner .base-info #name {
+  font-size: 25px;
+  font-weight: 600;
+  color: #2AA198;
+}
+#twitterblock .inner .base-info #location {
+  font-size: 12px;
+  margin-top: 5px;
+  color: #9a9ea3;
+}
+#twitterblock .inner .base-info #location .fa {
+  margin-right: 5px;
+}
+#twitterblock .inner .base-info #follow {
+  color: #fff;
+  width: 150px;
+  height: 40px;
+  display: block;
+  font-size: 14px;
+  line-height: 40px;
+  text-align: center;
+  margin: 20px auto 10px;
+  background: #2AA198;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+#twitterblock .inner .base-info #follow:hover {
+  background: #989898;
+}
+#twitterblock .inner .article-info {
+  padding: 0px;
+}
+#twitterblock .inner .article-info:before,
+#twitterblock .inner .article-info:after {
+  content: "";
+  display: table;
+}
+#twitterblock .inner .article-info:after {
+  clear: both;
+}
+#twitterblock .inner .article-info .article-info-block {
+  width: 50%;
+  float: left;
+  padding: 20px 15px;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+#twitterblock .inner .article-info .article-info-block span {
+  display: block;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+#twitterblock .inner .article-info .article-info-block:first-child {
+  border-right: 1px solid #eceff2;
+}
+#twitterblock .inner .social-links > table {
+  width: 100%;
+}
+#twitterblock .inner .social-links > table td {
+  text-align: center;
+  font-size: 24px;
+}
+#twitterblock .inner .social-links > table td a {
+  position: relative;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  transition: 0.2s ease;
+  color: #898d92;
+}
+#twitterblock .inner .social-links > table td a:hover {
+  color: #2AA198;
+}
+#twitterblock .inner .social-links > table td a.tooltip:hover:after {
+  right: -50%;
+  top: -41px;
+  color: #fff;
+  background: #333;
+  font-size: 14px;
+  content: attr(title);
+  display: block;
+  padding: 5px 15px;
+  position: absolute;
+  white-space: nowrap;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+#twitterblock .inner .social-links > table td a.tooltip:hover:before {
+  top: -12px;
+  right: 8px;
+  border: solid;
+  border-color: #333 transparent;
+  border-width: 5px 5px 0 5px;
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 2;
+}
+#twitterblock.card {
+  top: 50px;
+  right: 20px;
+  z-index: 999;
+  display: block;
+  min-width: 280px;
+  position: absolute;
+}
+#twitterblock.card .twitterblock-inner {
+  position: relative;
+  -webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+#twitterblock.card .twitterblock-inner:before,
+#twitterblock.card .twitterblock-inner:after {
+  z-index: 1;
+  content: '';
+  top: -20px;
+  right: 10px;
+  position: absolute;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #fff transparent;
+}
+#twitterblock.card .twitterblock-inner:after {
+  z-index: 0;
+  border-color: transparent transparent #dbdee1 transparent;
 }
 
 /*ajouts Kim twitter block*/
