@@ -2299,7 +2299,7 @@ ol.toc {
 }
 
 .twitter-timeline {
-  border-bottom: 1px solid #eceff2;
+  border : 1px solid #eceff2;
   background-size: 1em 1em;
 }
 
