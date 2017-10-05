@@ -2291,11 +2291,11 @@ ol.toc {
 
 /*ajouts Kim twitter block*/
 
-.twitterblock-block {
+.twitterblock {
   padding: 15px 20px;
   border-bottom: 1px solid #eceff2;
 }
-.twitterblock-block:last-child {
+.twitterblock:last-child {
   border-bottom: none;
 }
 #twitterblock {
@@ -2314,9 +2314,5 @@ ol.toc {
   margin-top: 40px;
   background: #fff;
 }
-
-#twitterblock .inner .printtweets {
-  width:100%
- }
 
 /*ajouts Kim twitter block*/
