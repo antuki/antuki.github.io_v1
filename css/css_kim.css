@@ -2292,14 +2292,12 @@ ol.toc {
 
 /* Personnalisation twitter time-line */
 
-.twitter-timeline,
-#toTop {
+.twitter-timeline {
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.05);
   box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-}
-
-.twitter-timeline {
   border-bottom : 1px solid #eceff2;
-  /*background-size: 1em 1em;*/
+  box-sizing: border-box;
+  white-space: nowrap;
+  display: block;
 }
 
