@@ -13,11 +13,6 @@
   </url>
   
   <url>
-    <loc>//antuki.github.io/articles/2016-12-24-github/</loc>
-    <lastmod>2016-12-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>//antuki.github.io/articles/</loc>
     <lastmod>2017-06-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -35,10 +30,6 @@
   </url>
   
   <url>
-    <loc>//antuki.github.io/packages/</loc>
-  </url>
-  
-  <url>
     <loc>//antuki.github.io/tags/</loc>
     <lastmod>2017-06-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -48,10 +39,6 @@
     <loc>//antuki.github.io/</loc>
     <lastmod>2017-06-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>//antuki.github.io/apropos/</loc>
   </url>
   
 </urlset>
