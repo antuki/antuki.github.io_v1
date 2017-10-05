@@ -31,5 +31,23 @@
 d’héberger ce blog (GitHub Pages)de tester la mise à disposition de packages R, notamment un que je prévois de faire un jour sur les changements de codes officiels géographiques.Cet article décrit rapidement les fonctionnalités de GitHub que j’ai pu découvrir pendant ces vacances de Noël.</description>
     </item>
     
+    <item>
+      <title>À la découverte de GitHub</title>
+      <link>//antuki.github.io/articles/2016-12-24-github/</link>
+      <pubDate>Sun, 25 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>//antuki.github.io/articles/2016-12-24-github/</guid>
+      <description>&lt;p&gt;Sensible à l’open data et à l’open source, je me suis enfin lancée sur GitHub, un site web d’hébergement, de gestion et de développement de logiciels. Cette plateforme devrait me permettre :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;d’héberger ce blog (&lt;a href=&#34;https://pages.github.com/&#34;&gt;&lt;strong&gt;GitHub&lt;/strong&gt; Pages&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;de tester la mise à disposition de packages R, notamment un que je prévois de faire un jour sur les changements de codes officiels géographiques.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cet article décrit rapidement les fonctionnalités de GitHub que j’ai pu découvrir pendant ces vacances de Noël. 🎄 🎁 🎅.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>
