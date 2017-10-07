@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>S&#39;amuser sur R on antuki.github.io</title>
+    <link>/tags/samuser-sur-r/</link>
+    <description>Recent content in S&#39;amuser sur R on antuki.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language>
+    <copyright>antuki. Powered by [blogdown](https://github.com/rstudio/blogdown)/[Hugo](//gohugo.io). Theme based on Icarus by [PPOffice](http://github.com/ppoffice).</copyright>
+    <lastBuildDate>Sat, 07 Oct 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/samuser-sur-r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Premier article :information_desk_person:</title>
+      <link>/articles/2017-06-24_premierpost/</link>
+      <pubDate>Sat, 07 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/articles/2017-06-24_premierpost/</guid>
+      <description>Un petit message noctune pour exprimer ma joie d’avoir enfin un blog qui tienne la route…
+Et qui permette de générer des articles très facilement depuis R
+Je vous présente par exemple la nouvelle palette de couleur à la mode appelée viridis et les diagrammes en violon…
+library(ggplot2)library(viridis)## Warning: le package &amp;#39;viridis&amp;#39; a été compilé avec la version R 3.4.2## Le chargement a nécessité le package : viridisLitehead(ToothGrowth)## len supp dose## 1 4.</description>
+    </item>
+    
+  </channel>
+</rss>

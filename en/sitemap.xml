@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/en/articles/2017-06-24_premierpost/</loc>
+    <lastmod>2017-10-07T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="/articles/2017-06-24_premierpost/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/articles/2017-06-24_premierpost/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/articles/</loc>
+    <lastmod>2017-10-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="/articles/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/articles/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/categories/</loc>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/packages/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="/packages/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/packages/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/tags/r-fun/</loc>
+    <lastmod>2017-10-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/en/tags/</loc>
+    <lastmod>2017-10-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/</loc>
+    <lastmod>2017-10-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/"
+                />
+  </url>
+  
+  <url>
+    <loc>/en/apropos/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="/apropos/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/apropos/"
+                />
+  </url>
+  
+</urlset>

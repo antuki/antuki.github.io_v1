@@ -2,51 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Articles on antuki.github.io</title>
-    <link>//antuki.github.io/articles/</link>
+    <link>/articles/</link>
     <description>Recent content in Articles on antuki.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
     <copyright>antuki. Powered by [blogdown](https://github.com/rstudio/blogdown)/[Hugo](//gohugo.io). Theme based on Icarus by [PPOffice](http://github.com/ppoffice).</copyright>
-    <lastBuildDate>Fri, 30 Jun 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Oct 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="//antuki.github.io/articles/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/articles/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Code R :information_desk_person:</title>
-      <link>//antuki.github.io/articles/2017-06-24_coder/</link>
-      <pubDate>Fri, 30 Jun 2017 00:00:00 +0000</pubDate>
-      
-      <guid>//antuki.github.io/articles/2017-06-24_coder/</guid>
-      <description>pie(c(280, 60, 20),c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny&amp;#39;, &amp;#39;Shady&amp;#39;))Ceci est un camembert.</description>
-    </item>
     
     <item>
-      <title>À la découverte de GitHub RMD</title>
-      <link>//antuki.github.io/articles/2016-12-24-github_rmd/</link>
-      <pubDate>Mon, 26 Dec 2016 00:00:00 +0000</pubDate>
+      <title>Premier article :information_desk_person:</title>
+      <link>/articles/2017-06-24_premierpost/</link>
+      <pubDate>Sat, 07 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>//antuki.github.io/articles/2016-12-24-github_rmd/</guid>
-      <description>Sensible à l’open data et à l’open source, je me suis enfin lancée sur GitHub, un site web d’hébergement, de gestion et de développement de logiciels. Cette plateforme devrait me permettre :
-d’héberger ce blog (GitHub Pages)de tester la mise à disposition de packages R, notamment un que je prévois de faire un jour sur les changements de codes officiels géographiques.Cet article décrit rapidement les fonctionnalités de GitHub que j’ai pu découvrir pendant ces vacances de Noël.</description>
-    </item>
-    
-    <item>
-      <title>À la découverte de GitHub</title>
-      <link>//antuki.github.io/articles/2016-12-24-github/</link>
-      <pubDate>Sun, 25 Dec 2016 00:00:00 +0000</pubDate>
-      
-      <guid>//antuki.github.io/articles/2016-12-24-github/</guid>
-      <description>&lt;p&gt;Sensible à l’open data et à l’open source, je me suis enfin lancée sur GitHub, un site web d’hébergement, de gestion et de développement de logiciels. Cette plateforme devrait me permettre :&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;d’héberger ce blog (&lt;a href=&#34;https://pages.github.com/&#34;&gt;&lt;strong&gt;GitHub&lt;/strong&gt; Pages&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;de tester la mise à disposition de packages R, notamment un que je prévois de faire un jour sur les changements de codes officiels géographiques.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Cet article décrit rapidement les fonctionnalités de GitHub que j’ai pu découvrir pendant ces vacances de Noël. 🎄 🎁 🎅.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>/articles/2017-06-24_premierpost/</guid>
+      <description>Un petit message noctune pour exprimer ma joie d’avoir enfin un blog qui tienne la route…
+Et qui permette de générer des articles très facilement depuis R
+Je vous présente par exemple la nouvelle palette de couleur à la mode appelée viridis et les diagrammes en violon…
+library(ggplot2)library(viridis)## Warning: le package &amp;#39;viridis&amp;#39; a été compilé avec la version R 3.4.2## Le chargement a nécessité le package : viridisLitehead(ToothGrowth)## len supp dose## 1 4.</description>
     </item>
     
   </channel>

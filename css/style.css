@@ -1,3 +1,6 @@
+
+/* style.css */
+
 body {
   width: 100%;
 }
@@ -117,27 +120,32 @@ body,
 }
 body {
   color: #565a5f;
-  background: #f5f8f9;
+  background: #f3f8fb;
   font: 14px "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif;
   -webkit-text-size-adjust: 100%;
 }
 a {
-  color: #38b7ea;
+  color: #2AA198;
   text-decoration: none;
 }
 a:visited {
-  color: #38b7ea;
+  color: #989898;
 }
+
 code {
-  margin: 0 2px;
-  color: #e96900;
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #f8f8ff;
+  -webkit-text-size-adjust: none;
+  color: #000000;
   padding: 3px 5px;
   font-size: 0.8em;
   -webkit-border-radius: 2px;
   border-radius: 2px;
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
-  background-color: #f8f8f8;
-}
+} 
+
 .outer {
   max-width: 1320px;
   margin: 0 auto;
@@ -204,7 +212,7 @@ code {
 .archive-article-header a:visited,
 .layout-wrap-inner.tag-cloud a:visited,
 .timeline-row .content h1 a:visited {
-  color: #565a5f;
+  color: #2AA198;
   -webkit-transition: 0.2s ease;
   -moz-transition: 0.2s ease;
   -ms-transition: 0.2s ease;
@@ -216,7 +224,7 @@ code {
 .archive-article-header a:visited:hover,
 .layout-wrap-inner.tag-cloud a:visited:hover,
 .timeline-row .content h1 a:visited:hover {
-  color: #38b7ea;
+  color: #989898;
 }
 .article-meta,
 .archive-year,
@@ -348,7 +356,7 @@ code {
   color: #565a5f;
 }
 #header a:hover {
-  color: #38b7ea;
+  color: #2AA198;
 }
 .header-inner #logo,
 #main-nav,
@@ -650,9 +658,9 @@ code {
 }
 #profile .inner .base-info #avatar {
   display: block;
-  margin: 10px auto 20px;
-  width: 128px;
-  height: 128px;
+  margin: 5px auto 5px;
+  width: 200px;
+  height: 200px;
 }
 #profile .inner .base-info #name,
 #profile .inner .base-info #title,
@@ -661,8 +669,9 @@ code {
   text-align: center;
 }
 #profile .inner .base-info #name {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 600;
+  color: #2AA198;
 }
 #profile .inner .base-info #location {
   font-size: 12px;
@@ -681,7 +690,7 @@ code {
   line-height: 40px;
   text-align: center;
   margin: 20px auto 10px;
-  background: #38b7ea;
+  background: #2AA198;
   -webkit-border-radius: 20px;
   border-radius: 20px;
   -webkit-transition: 0.2s ease;
@@ -690,7 +699,7 @@ code {
   transition: 0.2s ease;
 }
 #profile .inner .base-info #follow:hover {
-  background: #49c8fb;
+  background: #989898;
 }
 #profile .inner .article-info {
   padding: 0px;
@@ -737,7 +746,7 @@ code {
   color: #898d92;
 }
 #profile .inner .social-links > table td a:hover {
-  color: #565a5f;
+  color: #2AA198;
 }
 #profile .inner .social-links > table td a.tooltip:hover:after {
   right: -50%;
@@ -815,15 +824,15 @@ code {
 }
 .article-title {
   font-size: 2em;
-  color: #565a5f;
+  color: #2AA198;
   text-decoration: none;
   line-height: 1.3em;
 }
 a.article-title:visited {
-  color: #565a5f;
+  color: #2AA198;
 }
 a.article-title:hover {
-  color: #38b7ea;
+  color: #989898;
 }
 @media screen and (max-width: 559px) {
   .article-title {
@@ -854,10 +863,10 @@ a.article-title:hover {
   margin-right: 3px;
 }
 .article-meta a {
-  color: #565a5f;
+  color: #2AA198;
 }
 .article-meta a:hover {
-  color: #38b7ea;
+  color: #989898;
 }
 .article-category .fa-angle-right {
   margin: 0 5px;
@@ -866,7 +875,7 @@ a.article-title:hover {
   content: "#";
 }
 .article-entry {
-  color: #565a5f;
+  color: #666666;
   padding: 0 20px;
   line-height: 1.6em;
 }
@@ -901,7 +910,7 @@ a.article-title:hover {
   margin: 1.3em 0;
 }
 .article-entry a {
-  color: #38b7ea;
+  color: #2AA198;
   text-decoration: none;
 }
 .article-entry a:hover {
@@ -979,7 +988,7 @@ a.article-title:hover {
   margin-left: 1em;
 }
 .article-entry .caption {
-  color: #999;
+  color: #666666;
   display: block;
   font-size: 0.9em;
   margin-top: 0.5em;
@@ -1014,10 +1023,10 @@ a.article-title:hover {
   text-decoration: none;
 }
 .article-more-link a:hover {
-  background: #38b7ea;
+  background: #2AA198;
   color: #fff;
   text-decoration: none;
-  text-shadow: 0 1px #169cd2;
+  text-shadow: 0 1px #1a655f;
 }
 .article-footer {
   font-size: 0.85em;
@@ -1035,11 +1044,11 @@ a.article-title:hover {
   clear: both;
 }
 .article-footer a {
-  color: #999;
+  color: #989898 ;
   text-decoration: none;
 }
 .article-footer a:hover {
-  color: #565a5f;
+  color: #2AA198;
 }
 .article-comment-link {
   float: right;
@@ -1655,7 +1664,7 @@ ol.toc {
   margin-bottom: 0;
 }
 #footer a {
-  color: #38b7ea;
+  color: #2AA198;
   text-decoration: none;
 }
 #footer a:hover {
@@ -2068,6 +2077,7 @@ ol.toc {
 .ins-section .ins-search-item.active .ins-search-preview {
   color: #fff;
 }
+
 .highlight {
   margin: 0px;
   display: block;
@@ -2098,9 +2108,10 @@ ol.toc {
 .article-entry .highlight .line {
   height: 1.6em;
 }
+
 .highlight {
-  color: #ddd;
-  background: #272822;
+  color: #000000;
+  background: #f8f8ff;
 }
 .highlight .code .tag,
 .highlight .code .keyword,
@@ -2120,7 +2131,8 @@ ol.toc {
 .highlight .code .symbol,
 .highlight .code .regexp,
 .highlight .code .link {
-  color: #bf79db;
+    color: #2AA198;
+  font-weight: bold;
 }
 .highlight .code .string,
 .highlight .code .bullet,
@@ -2137,13 +2149,14 @@ ol.toc {
 .highlight .code .variable,
 .highlight .code .template-tag,
 .highlight .code .template-variable {
-  color: #a6e22e;
+  color: #f92672;
 }
 .highlight .code .comment,
 .highlight .code .quote,
 .highlight .code .deletion,
 .highlight .code .meta {
-  color: #75715e;
+  color: #008080;
+  font-style: italic
 }
 .highlight .code .keyword,
 .highlight .code .selector-tag,
@@ -2154,4 +2167,40 @@ ol.toc {
 .highlight .code .type,
 .highlight .code .selector-id {
   font-weight: bold;
+} 
+
+
+/* Personnalisation twitter time-line */
+
+.twitter-timeline {
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  border-bottom : 1px solid #eceff2;
+  box-sizing: border-box;
+  white-space: nowrap;
+  display: block;
+}
+
+
+
+.main-nav-trad {
+display: inline-block;
+line-height: 40px;
+padding-left:20px;
+padding-right:20px;
+padding-bottom:0px;
+padding-top:0px;
+float: left;
+font-weight:bold;
+background: #2AA198;
+-webkit-border-radius:20px;
+border-radius: 20px;
+-webkit-transition: 0.0s ease;
+  -moz-transition: 0.0s ease;
+  -ms-transition: 0.0s ease;
+  transition: 0.0s ease;
+}
+
+.main-nav-trad:hover {
+  background: #FFFFFF;
 }

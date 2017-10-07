@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R fun on antuki.github.io</title>
+    <link>/en/tags/r-fun/</link>
+    <description>Recent content in R fun on antuki.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language>
+    <copyright>antuki. Powered by [blogdown](https://github.com/rstudio/blogdown)/[Hugo](//gohugo.io). Theme based on Icarus by [PPOffice](http://github.com/ppoffice).</copyright>
+    <lastBuildDate>Sat, 07 Oct 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/en/tags/r-fun/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>First article :information_desk_person:</title>
+      <link>/en/articles/2017-06-24_premierpost/</link>
+      <pubDate>Sat, 07 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/en/articles/2017-06-24_premierpost/</guid>
+      <description>A small message in the night to share my happy mood of having a new blog which does not seem so bad after all.
+And which allows me to create posts in a very simple way from R.
+Like that i’m showing you for example the very trendy viridis palette and what we call violin diagram (kind of boxplot but much more better).
+library(ggplot2)library(viridis)## Warning: le package &amp;#39;viridis&amp;#39; a été compilé avec la version R 3.</description>
+    </item>
+    
+  </channel>
+</rss>

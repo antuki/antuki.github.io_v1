@@ -1,12 +1,13 @@
 /*
-Monokai style - ported by Luigi Maselli - http://grigio.org
+http://grigio.org
+Style highlight by Kim
 */
 
 .hljs {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  background: #272822;
+  background: #f8f8ff;
   -webkit-text-size-adjust: none;
 }
 
@@ -24,7 +25,7 @@ Monokai style - ported by Luigi Maselli - http://grigio.org
 }
 
 .hljs {
-  color: #ddd;
+  color: #000000;
 }
 
 .hljs .hljs-constant,
@@ -36,7 +37,8 @@ Monokai style - ported by Luigi Maselli - http://grigio.org
 .hljs-code,
 .hljs-class .hljs-title,
 .hljs-header {
-  color: white;
+  color: #900;
+  font-weight: bold
 }
 
 .hljs-link_label,
@@ -45,7 +47,7 @@ Monokai style - ported by Luigi Maselli - http://grigio.org
 .hljs-symbol .hljs-string,
 .hljs-value,
 .hljs-regexp {
-  color: #bf79db;
+   color: #000000;
 }
 
 .hljs-link_url,
@@ -76,7 +78,8 @@ Monokai style - ported by Luigi Maselli - http://grigio.org
 .tex .hljs-command,
 .hljs-prompt,
 .hljs-name {
-  color: #a6e22e;
+  color: #2AA198;
+  font-weight: bold
 }
 
 .hljs-comment,
@@ -91,7 +94,8 @@ Monokai style - ported by Luigi Maselli - http://grigio.org
 .hljs-shebang,
 .apache .hljs-sqbracket,
 .tex .hljs-formula {
-  color: #75715e;
+  color: #008080;
+  font-style: italic
 }
 
 .hljs-keyword,
@@ -124,3 +128,4 @@ Monokai style - ported by Luigi Maselli - http://grigio.org
 .xml .hljs-cdata {
   opacity: 0.5;
 }
+
