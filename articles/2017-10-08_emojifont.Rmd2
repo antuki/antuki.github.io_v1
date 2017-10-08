@@ -1,0 +1,37 @@
+---
+title:  "Premier article plein d'amour :blue_heart: grâce au package emojifont"
+author: ~
+date: '2017-10-08'
+slug: 
+categories: []
+tags: [S'amuser sur R, Packages R, DataViz]
+banner: ''
+images: []
+menu: ''
+description : ''
+---
+
+Un premier article pour fêter la création de ce blog grâce à [Hugo](//gohugo.io) et [blogdown](https://github.com/rstudio/blogdown). Je peux désormais créer des articles (en français et/ou anglais) en un clic depuis R. 
+
+C'est également l'occasion de partager avec vous ma découverte du package [emojifont](https://cran.r-project.org/web/packages/emojifont/vignettes/emojifont.html) qui permet de rajouter des petites images à nos ggplots.
+Merci à [\@guangchuangyu](https://twitter.com/guangchuangyu) !
+
+```{r emojifont1, eval=T}
+#install.packages("emojifont")
+library(emojifont)
+library(ggplot2)
+emoji('blue_heart')
+t= seq(-1, 1, length=50)
+x=cos(t)*sin(t)*log(abs(t))
+y=sqrt(abs(t))*cos(t)
+#windows()
+#ggplot() + geom_emoji('blue_heart', x=x, y=y, size=10, color="#00BCF2")
+ggplot() + geom_point(x=x, y=y, size=10, color="#00BCF2")
+
+```
+
+<!--more-->
+
+Cela m'a par ailleurs également permis de réviser un peu mon cours de maths sur les courbes paramétrées... Cela ne m'a pas fait de mal. 
+
+J'espère de tout coeur que de nombreux packages comme celui-ci vont voir le jour pour nous permettre d'avancer encore d'un cran dans la data visualisation avec R ! 
