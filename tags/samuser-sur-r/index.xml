@@ -14,10 +14,10 @@
     
     <item>
       <title>Premier article plein d&#39;amour :blue_heart: grâce au package emojifont</title>
-      <link>/articles/2017-10-08_emojifont/</link>
+      <link>/2017/10/08/premier-article-plein-damour-blue_heart-gr%C3%A2ce-au-package-emojifont/</link>
       <pubDate>Sun, 08 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/articles/2017-10-08_emojifont/</guid>
+      <guid>/2017/10/08/premier-article-plein-damour-blue_heart-gr%C3%A2ce-au-package-emojifont/</guid>
       <description>Un premier article pour fêter la création de ce blog grâce à Hugo et blogdown. Je peux désormais créer des articles (en français et/ou anglais) en un clic depuis R.
 C’est également l’occasion de partager avec vous ma découverte du package emojifont qui permet de rajouter des petites images à nos ggplots. Merci à @guangchuangyu !
 #install.packages(&amp;quot;emojifont&amp;quot;)library(emojifont)## Warning: le package &amp;#39;emojifont&amp;#39; a été compilé avec la version R 3.</description>

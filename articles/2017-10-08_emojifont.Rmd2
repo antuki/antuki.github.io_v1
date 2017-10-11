@@ -1,14 +1,17 @@
 ---
-title:  "Premier article plein d'amour :blue_heart: grâce au package emojifont"
-author: ~
-date: '2017-10-08'
-slug: 
+author: null
+banner: ""
 categories: []
-tags: [S'amuser sur R, Packages R, DataViz]
-banner: ''
+date: 2017-10-08
+description: ""
 images: []
-menu: ''
-description : ''
+menu: ""
+slug: null
+tags:
+- S'amuser sur R
+- Packages R
+- DataViz
+title: 'Premier article plein d''amour :blue_heart: grâce au package emojifont'
 ---
 
 Un premier article pour fêter la création de ce blog grâce à [Hugo](//gohugo.io) et [blogdown](https://github.com/rstudio/blogdown). Je peux désormais créer des articles (en français et/ou anglais) en un clic depuis R. 

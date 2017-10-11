@@ -1,14 +1,17 @@
 ---
-title:  "First post full of love :blue_heart: thanks to emojifont package"
-author: ~
-date: '2017-10-08'
-slug: 
+author: null
+banner: ""
 categories: []
-tags: [R fun, R packages, DataViz]
-banner: ''
+date: 2017-10-08
+description: ""
 images: []
-menu: ''
-description : ''
+menu: ""
+slug: null
+tags:
+- R fun
+- R packages
+- DataViz
+title: 'First post full of love :blue_heart: thanks to emojifont package'
 ---
 
 A first article to celebrate the creation of this blog thanks to [Hugo](// gohugo.io) and [blogdown](https://github.com/rstudio/blogdown). I can now create posts (in French and / or English) in one click from R.
