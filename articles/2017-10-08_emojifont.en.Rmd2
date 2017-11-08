@@ -3,10 +3,10 @@ author: null
 banner: ""
 categories: []
 date: 2017-10-08
-description: ""
+description: <p>A first article to celebrate the creation of this blog thanks to <a href="//%20gohugo.io">Hugo</a> and <a href="https://github.com/rstudio/blogdown">blogdown</a>. I can now create posts (in French and / or English) with one click from R.</p><p>It is also an opportunity to share with you my discovery of the <a href="https://cran.r-project.org/web/packages/emojifont/vignettes/emojifont.html">emojifont</a> package which allows to add small images to our ggplots. Thank you <a href="https://twitter.com/guangchuangyu">@guangchuangyu</a>!</p><p><img src="/articles/2017-10-08_emojifont.en_files/figure-html/emojifont1-1.png" width="672" /></p> 
 images: []
 menu: ""
-slug: null
+slug: emojifont
 tags:
 - R fun
 - R packages
@@ -14,7 +14,7 @@ tags:
 title: 'First post full of love :blue_heart: thanks to emojifont package'
 ---
 
-A first article to celebrate the creation of this blog thanks to [Hugo](// gohugo.io) and [blogdown](https://github.com/rstudio/blogdown). I can now create posts (in French and / or English) in one click from R.
+A first article to celebrate the creation of this blog thanks to [Hugo](// gohugo.io) and [blogdown](https://github.com/rstudio/blogdown). I can now create posts (in French and / or English) with one click from R.
 
 It is also an opportunity to share with you my discovery of the [emojifont](https://cran.r-project.org/web/packages/emojifont/vignettes/emojifont.html) package which allows to add small images to our ggplots.
 Thank you [\@guangchuangyu](https://twitter.com/guangchuangyu)!

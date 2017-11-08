@@ -3,10 +3,10 @@ author: null
 banner: ""
 categories: []
 date: 2017-10-08
-description: ""
+description: <p>Un premier article pour fêter la création de ce blog grâce à <a href="//gohugo.io">Hugo</a> et <a href="https://github.com/rstudio/blogdown">blogdown</a>. Je peux désormais créer des articles (en français et/ou anglais) en un clic depuis R.</p><p>C’est également l’occasion de partager avec vous ma découverte du package <a href="https://cran.r-project.org/web/packages/emojifont/vignettes/emojifont.html">emojifont</a> qui permet de rajouter des petites images à nos ggplots. Merci à <a href="https://twitter.com/guangchuangyu">@guangchuangyu</a> !</p><p><img src="/articles/2017-10-08_emojifont_files/figure-html/emojifont1-1.png" width="672" /></p>
 images: []
 menu: ""
-slug: null
+slug: emojifont
 tags:
 - S'amuser sur R
 - Packages R
