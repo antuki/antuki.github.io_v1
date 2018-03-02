@@ -24,6 +24,15 @@ C’est également l’occasion de partager avec vous ma découverte du package 
     </item>
     
     <item>
+      <title></title>
+      <link>/presentations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/presentations/</guid>
+      <description>Présentationscode{white-space: pre;}pre:not([class]) {background-color: white;}if (window.hljs) {hljs.configure({languages: []});hljs.initHighlightingOnLoad();if (document.readyState &amp;&amp; document.readyState === &#34;complete&#34;) {window.setTimeout(function() { hljs.initHighlighting(); }, 0);}}h1 {font-size: 34px;}h1.title {font-size: 38px;}h2 {font-size: 30px;}h3 {font-size: 24px;}h4 {font-size: 18px;}h5 {font-size: 16px;}h6 {font-size: 12px;}.</description>
+    </item>
+    
+    <item>
       <title>Packages R</title>
       <link>/packages/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -39,7 +48,7 @@ Le découpage des territoires français, en particulier les communes, n’est pa
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/presentations/</guid>
-      <description>Ci-dessous mes différentes interventions :
+      <description>Ci-dessous mes différentes interventions. Cliquez sur les images pour voir les diaporamas !
 Meet-up RLadies Paris mars 2018</description>
     </item>
     
