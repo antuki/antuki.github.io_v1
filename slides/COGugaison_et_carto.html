@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Données géographiqueset cartographie sous R</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Kim Antunez" />
+    <meta name="date" content="2018-05-03" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/rladies.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/rladies-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="antuki.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Données géographiques</br>et cartographie sous R
+## Manipulation de données communales en historique et réalisation de cartes
+### Kim Antunez
+### 05/03/2018
+
+---
+
+
+class: center, middle
+
+&lt;center&gt;&lt;img src="img/avatar.gif" height="300px"&gt;&lt;/center&gt;
+
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+
+&lt;a href="http://twitter.com/antuki13" class="social"&gt;&lt;i class="fa fa-twitter fa-2x" title="Mon twitter"&gt;&lt;/i&gt;@antuki13&lt;/a&gt;
+&lt;a href="http://github.com/antuki" class="social"&gt;&lt;i class="fa fa-github fa-2x" title="Mon github"&gt;&lt;/i&gt;antuki&lt;/a&gt;
+&lt;a href="http://antuki.github.io" class="social"&gt;&lt;i class="fa fa-bold fa-2x" title="Mon blog"&gt;&lt;/i&gt;antuki.github.io&lt;/a&gt;
+
+Diaporama créé avec le package R [**xaringan**](https://github.com/yihui/xaringan) avec le thème [**rladies**](https://alison.rbind.io/post/r-ladies-slides/).
+
+Avec également l'utilisation de [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), et [R Markdown](https://rmarkdown.rstudio.com).
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

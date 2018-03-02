@@ -1,0 +1,31 @@
+---
+title: "Données géographiques</br>et cartographie sous R"
+subtitle: "Manipulation de données communales en historique et réalisation de cartes"
+author: "Kim Antunez"
+date: "05/03/2018"
+output:
+  xaringan::moon_reader:
+    css: ["default", "rladies", "rladies-fonts","antuki.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      
+
+---
+
+class: center, middle
+
+<center><img src="img/avatar.gif" height="300px"></center>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<a href="http://twitter.com/antuki13" class="social"><i class="fa fa-twitter fa-2x" title="Mon twitter"></i>@antuki13</a>
+<a href="http://github.com/antuki" class="social"><i class="fa fa-github fa-2x" title="Mon github"></i>antuki</a>
+<a href="http://antuki.github.io" class="social"><i class="fa fa-bold fa-2x" title="Mon blog"></i>antuki.github.io</a>
+
+Diaporama créé avec le package R [**xaringan**](https://github.com/yihui/xaringan) avec le thème [**rladies**](https://alison.rbind.io/post/r-ladies-slides/).
+
+Avec également l'utilisation de [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), et [R Markdown](https://rmarkdown.rstudio.com).
+

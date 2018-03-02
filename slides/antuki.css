@@ -1,0 +1,16 @@
+﻿ /* Style all font awesome icons */
+.fa {
+    padding: 10px;
+    font-size: 200px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+    background: #FFFFFF;
+    color: black;
+}
+
+.social:hover {
+    opacity: 0.7;
+   color: #88398a;
+}
