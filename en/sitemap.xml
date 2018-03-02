@@ -107,6 +107,20 @@
   </url>
   
   <url>
+    <loc>/en/presentations/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="/presentations/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/presentations/"
+                />
+  </url>
+  
+  <url>
     <loc>/en/</loc>
     <lastmod>2017-10-08T00:00:00+00:00</lastmod>
     <priority>0</priority>

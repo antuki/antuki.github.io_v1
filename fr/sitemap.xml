@@ -85,6 +85,20 @@
   </url>
   
   <url>
+    <loc>/presentations/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/presentations/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="/presentations/"
+                />
+  </url>
+  
+  <url>
     <loc>/tags/samuser-sur-r/</loc>
     <lastmod>2017-10-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
