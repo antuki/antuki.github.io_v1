@@ -418,7 +418,7 @@ class: inverse, center, middle
 - un seul package : sf (nov. 2016) 
 - auteur (Edzer Pebesma) = contributeur / maintainer des packages précédents
 - format :   data.frame enrichi d’une «colonne-liste» de géométries
-- avantage : format considéré plus pratique «tidy» et compatible avec >%>
+- avantage : format considéré plus pratique «tidy» et compatible avec %>%
 
 ---
 # Format des couches cartographiques (2/3)
