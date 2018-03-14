@@ -16,6 +16,7 @@ output:
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(dev = "svg", cache = FALSE)
 ```
 
 background-image: url("img/giphy1.gif")
@@ -33,13 +34,13 @@ Ce code est **révisé annuellement**, en fonction notamment des **fusions et as
 # Types de modifications communales (1/7)
 ```{r comment='#', eval=TRUE, echo=F, warning=F, message=F}
 library(COGugaison)
-trajectoire_commune("76108", 2014,donnees_insee=F)
+trajectoire_commune("76108", 2014,donnees_insee=FALSE)
 ```
 ---
 # Types de modifications communales (2/7)
 ```{r comment='#', eval=TRUE, echo=F, warning=F, message=F}
 library(COGugaison)
-trajectoire_commune("14697", 2013,donnees_insee=F)
+trajectoire_commune("14697", 2013,donnees_insee=FALSE)
 ```
 ---
 # Types de modifications communales (3/7)
@@ -137,17 +138,18 @@ ggiraph(code = {print(graph_com )}, height=5)
 ```
 ---
 # Le package COGugaison (1/2)
-- détecter le millésime du code officiel géographique d'une table de données communales : fonction **`COG_akinator`** et apparier une liste de communes d'une base de données avec celle du COG d'un millésime donné avec `apparier_COG`
+- détecter le millésime du code officiel géographique d'une table de données communales : fonction **`COG_akinator`** et apparier une liste de communes d'une base de données avec celle du COG d'un millésime donné avec `apparier_COG`  
 
 - visualiser les modifications communales (fusions, défusions, changements de codes ou de noms) qui ont eu lieu entre deux dates : `modifications_communales`
 
-- visualiser sur un graphique interactif la trajectoire d'une commune donnée, c'est-à-dire toutes les modifications qui ont eu lieu depuis 1968 : **`trajectoire_commune`** et `trajectoire_commune_shiny`  
-- transformer des tables de données numériques en géographie au premier janvier d'une année souhaitée : **`changement_COG_varNum`**. 
+- visualiser sur un graphique interactif la trajectoire d'une commune donnée, c'est-à-dire toutes les modifications qui ont eu lieu depuis 1968 : **`trajectoire_commune`** et `trajectoire_commune_shiny` 
+
+- transformer des tables de données numériques en géographie au premier janvier d'une année souhaitée : **`changement_COG_varNum`** 
 ---
 # Le package COGugaison (2/2)
-- transformer des typologies de communes en géographie au premier janvier d'une année souhaitée en ayant le choix entre plusieurs hypothèses de classement en cas de fusion de communes de classes différentes (attribuer une unique classe à toutes les communes fusionnées, attribuer la classe qui contient le plus de population, définir une classe absorbante, une classe absorbée ou une classe spécifique aux regroupements de plusieurs communes de classes différentes) : **`changement_COG_typo`**. Il est également possible d'isoler dans une table les communes fusionnées appartenant à des classes différentes : `changement_COG_typo_details`.
+- transformer des typologies de communes en géographie au premier janvier d'une année souhaitée en ayant le choix entre plusieurs hypothèses de classement en cas de fusion de communes de classes différentes (attribuer une unique classe à toutes les communes fusionnées, attribuer la classe qui contient le plus de population, définir une classe absorbante, une classe absorbée ou une classe spécifique aux regroupements de plusieurs communes de classes différentes) : **`changement_COG_typo`**. Il est également possible d'isoler dans une table les communes fusionnées appartenant à des classes différentes : `changement_COG_typo_details`
 
-- permettre d'agréger les tables de données communales à de nombreux échelons supra-communaux administratifs (EPCI, arrondissements, cantons-villes, départements, régions) ou d'étude (bassins de vie, zones d'emploi, unités urbaines, aires urbaines) : **`nivsupra`**.
+- permettre d'agréger les tables de données communales à de nombreux échelons supra-communaux administratifs (EPCI, arrondissements, cantons-villes, départements, régions) ou d'étude (bassins de vie, zones d'emploi, unités urbaines, aires urbaines) : **`nivsupra`**
 
 - gérer des cas particuliers comme les codes Insee des communes corses (`modification_Corse`) ou des arrondissements municipaux de Paris, Lyon, et Marseille (**`enlever_PLM`**) ou encore l'ancienne commune de l'Oudon (`modification_Oudon`)
 ---
@@ -180,7 +182,7 @@ head(libelles_supracom_2017)
 <center><img src="img/typo_fusion2.png" height="120px"></center>
 **changement_COG_typo** : Transformer des typologies   
  -  `methode_classe_fusion` : pour toutes les communes qui ont fusionné entre 2 dates indiquer comme classe la valeur inscrite dans "mot_fusion" y compris pour les fusions de communes de mêmes classes
- - `methode_difference` : créer une classe spécifique dont le nom est contenu dans mot_difference [par défaut]
+ - `methode_difference` : créer une classe spécifique dont le nom est contenu dans mot_difference (par défaut)
  - `methode_max_pop` : attribuer la classe contenant le maximum de population des communes fusionnées
  - `methode_classe_absorbante` : attribuer la classe dite absorbante à toute commune fusionnée contenant au moins une ancienne commune appartenant à cette classe absorbante
  - `methode_classe_absorbee` : ne pas tenir compte de cette classe dite "absorbée" pour toute commune fusionnée contenant au moins une ancienne commune appartenant à cette classe absorbée
@@ -190,28 +192,28 @@ head(libelles_supracom_2017)
 ```{r comment='#', eval=TRUE, echo=F, warning=F, message=F,include=FALSE}
 library(sf)
 comm_2017 <- st_read(paste0(getwd(),"/data/couches_geo/COM_2017_CARTElette.shp"), stringsAsFactors = FALSE) %>% 
-  merge(.,table_supracom_2017[,-2],by.x="cod2017",by.y="CODGEO",all.x=T)
+  merge(table_supracom_2017[,-2],by.x="cod2017",by.y="CODGEO",all.x = T)
 ```
 ```{r, fig.show='hold'}
-table_modif_com <- cbind(COG1968,COG1968[,1])[,c(1,4)] %>%
-  setNames(c("CODGEO","typo"))
-table_modif_com[1,]
+table_modif_com <- cbind(COG1968, COG1968[, 1])[, c(1,4)] %>%
+  setNames(c("CODGEO", "typo"))
+table_modif_com[1, ]
 table_modif_com <- changement_COG_typo(table_modif_com,
-methode_fusion = "methode_classe_fusion",mot_fusion = "communes fusionnées",
-annees=c(1968:2017),codgeo_entree = "CODGEO",typos="typo",donnees_insee = F)
+methode_fusion = "methode_classe_fusion", mot_fusion = "communes fusionnées",
+annees = 1968:2017, codgeo_entree = "CODGEO", typos = "typo", donnees_insee = F)
 
-table_modif_com$typo[table_modif_com$typo%in%(
+table_modif_com$typo[table_modif_com$typo %in% (
   table_modif_com$typo[duplicated(table_modif_com$typo) & 
-                         table_modif_com$typo!="communes fusionnées"])]<-
+                         table_modif_com$typo != "communes fusionnées"])] <-
   "communes defusionnées"
 
-table_modif_com$typo[which(!table_modif_com$typo%in%c("communes fusionnées",
+table_modif_com$typo[which(!table_modif_com$typo %in% c("communes fusionnées", 
 "communes defusionnées"))] <- "communes inchangées"
 
-table_modif_com[1,]
+table_modif_com[1, ]
 ```
 ```{r comment='#', eval=TRUE, echo=F, warning=F, message=F}
-comm_2017 <- merge(comm_2017,table_modif_com,by.x='cod2017',by.y='CODGEO',all.x=T,all.y=T) %>% 
+comm_2017 <- merge(comm_2017, table_modif_com, by.x = 'cod2017', by.y = 'CODGEO', all.x = T, all.y=T) %>% 
   filter(typo!="communes inchangées")
 
 theme_map2 <- function () 
@@ -281,21 +283,20 @@ class: inverse, center, middle
 ```{r,warning=F, message=F}
 library(readxl)
 
-recup_bdd <- function(annee){
-  bdd <- read_excel("data/pop-sexe-age-quinquennal6814.xls",
-                    sheet = paste0("COM_",annee),
-                    skip=13,col_names = TRUE, na = "")  %>% 
-    mutate(codgeo=paste0(substr(DR,1,2),CR)) %>% 
-    filter(!is.na(get(paste0("ageq_rec01s1rpop",annee)))) %>% 
-    mutate(total_s1=rowSums(select(.,contains("s1"))), 
-           total_s2=rowSums(select(.,contains("s2")))) %>%
-    select(codgeo,total_s1,total_s2)
+recup_bdd <- function(annee) {
+  bdd <- read_excel("data/pop-sexe-age-quinquennal6814.xls", 
+    sheet = paste0("COM_", annee), skip = 13, col_names = TRUE, 
+    na = "") %>% mutate(codgeo = paste0(substr(DR, 1, 2), 
+    CR)) %>% filter(!is.na(get(paste0("ageq_rec01s1rpop", 
+    annee)))) %>% mutate(total_s1 = rowSums(select(., contains("s1"))), 
+    total_s2 = rowSums(select(., contains("s2")))) %>% select(codgeo, 
+    total_s1, total_s2)
   return(bdd)
 }
 bdd_1975 <- recup_bdd(1975)
 bdd_1999 <- recup_bdd(1999)
 bdd_2014 <- recup_bdd(2014)
-c(nrow(bdd_1975),nrow(bdd_1999),nrow(bdd_2014))
+c(nrow(bdd_1975), nrow(bdd_1999), nrow(bdd_2014))
 ```
 ---
 background-image: url("img/giphy3.gif")
@@ -307,40 +308,40 @@ class: inverse, center, middle
 ---
 # En quel COG sont les données ?
 ```{r comment='#', eval=TRUE, echo=T, warning=F, message=F}
-COG_akinator(bdd_1975$codgeo,donnees_insee = T)
-COG_akinator(bdd_1999$codgeo,donnees_insee = T)
-COG_akinator(bdd_2014$codgeo,donnees_insee = T)
+COG_akinator(bdd_1975$codgeo, donnees_insee = TRUE)
+COG_akinator(bdd_1999$codgeo, donnees_insee = TRUE)
+COG_akinator(bdd_2014$codgeo, donnees_insee = TRUE)
 # REMARQUE :les recensements récents sont en COG n+2
 ```
 ---
 # Changements de COG
 ```{r comment='#', eval=TRUE, echo=T, warning=F, message=F}
-#Transformer les tables en bons COG
+# Transformer les tables en bons COG
 # idem pour bdd_1999 et bdd_2014
 bdd_1975_COG2016 <- bdd_1975 %>%
-  enlever_PLM(table_entree=.) %>% 
-  changement_COG_varNum(.,c(1975:2016),donnees_insee = T)
+  enlever_PLM() %>% 
+  changement_COG_varNum(1975:2016, donnees_insee = TRUE)
 ```
 
 ```{r comment='#', eval=TRUE, echo=F, warning=F, message=F}
 bdd_1999_COG2016 <- bdd_1999 %>%
-  enlever_PLM(table_entree=.) %>% 
-  changement_COG_varNum(.,c(1999:2016),donnees_insee = T)
+  enlever_PLM() %>% 
+  changement_COG_varNum(1999:2016,donnees_insee = T)
 
 bdd_2014_COG2016 <- bdd_2014 %>%
-  enlever_PLM(table_entree=.) %>% 
-  changement_COG_varNum(.,c(2016:2016),donnees_insee = T)
+  enlever_PLM() %>% 
+  changement_COG_varNum(c(2016:2016),donnees_insee = T)
 ```
 
 ```{r comment='#', eval=TRUE, echo=T, warning=F, message=F}
-#Fusionner les tables
-bdd <- plyr::join_all(list(COG2016 %>% rename(codgeo=CODGEO) %>% select(-POP),
-                           bdd_1975_COG2016,bdd_1999_COG2016,bdd_2014_COG2016),
-                      type="left",by="codgeo") %>% 
-setNames(nm=c("CODGEO","LIBGEO","total_s1_1975","total_s2_1975","total_s1_1999",
-                "total_s2_1999","total_s1_2014","total_s2_2014"))
-# vérifier les totaux. Par exemple... 
-sum(bdd_2014$total_s1,na.rm = T)-sum(bdd$total_s1_2014,na.rm = T)
+# Fusionner les tables
+bdd <- plyr::join_all(list(COG2016 %>% rename(codgeo = CODGEO) %>% 
+  select(-POP), bdd_1975_COG2016, bdd_1999_COG2016, bdd_2014_COG2016), 
+  type = "left", by = "codgeo") %>% setNames(nm = c("CODGEO", 
+  "LIBGEO", "total_s1_1975", "total_s2_1975", "total_s1_1999", 
+  "total_s2_1999", "total_s1_2014", "total_s2_2014"))
+# vérifier les totaux. Par exemple...
+sum(bdd_2014$total_s1, na.rm = TRUE) - sum(bdd$total_s1_2014, na.rm = TRUE)
 ```
 ---
 # Echelles géo supra-communales (1/2)
@@ -362,20 +363,20 @@ carte_plot <- function(maille){
 }
 
 ```
-```{r comment='#', eval=TRUE, echo=F, warning=F, message=F,fig.align="center"}
+```{r comment='#', eval=TRUE, echo=F, warning=F, message=F,fig.align="center",fig.width=12,fig.height=8}
 set.seed(3)
 require(gridExtra)
 grid.arrange(carte_plot("CV"),
-           carte_plot("EPCI"),
-           carte_plot("BV2012"),
-           carte_plot("AU2010"),
-            ncol=2
+             carte_plot("EPCI"),
+             carte_plot("BV2012"),
+             carte_plot("AU2010"),
+             ncol=2
 )
 ```
 ---
 # Echelles géo supra-communales (2/2)
 
-```{r comment='#', eval=TRUE, echo=F, warning=F, message=F,fig.align="center"}
+```{r comment='#', eval=TRUE, echo=F, warning=F, message=F,fig.align="center",fig.width=12,fig.height=8}
 set.seed(2)
 grid.arrange(carte_plot("ARR"),
              carte_plot("ZE2010"),
@@ -390,14 +391,13 @@ grid.arrange(carte_plot("ARR"),
 # Agrégation par Zone d'Emploi
 
 ```{r comment='#', eval=TRUE, echo=T, warning=F, message=F}
-bdd[1,]
+bdd[1, ]
 
-bdd_ze <- bdd %>% 
-  nivsupra(.,COG=2016,nivsupra="ZE2010") %>% 
-  mutate(rapport_FH_1975=100*total_s2_1975/total_s1_1975,
-         rapport_FH_1999=100*total_s2_1999/total_s1_1999,
-         rapport_FH_2014=100*total_s2_2014/total_s1_2014
-  )
+bdd_ze <- bdd %>%
+  nivsupra(COG = 2016, nivsupra = "ZE2010") %>% 
+  mutate(rapport_FH_1975 = 100 * total_s2_1975/total_s1_1975, 
+    rapport_FH_1999 = 100 * total_s2_1999/total_s1_1999, 
+    rapport_FH_2014 = 100 * total_s2_2014/total_s1_2014)
 ```
 
 ---
@@ -417,8 +417,8 @@ class: inverse, center, middle
 **Maintenant = sf**
 - un seul package : sf (nov. 2016) 
 - auteur (Edzer Pebesma) = contributeur / maintainer des packages précédents
-- format :   data.frame enrichi d’une «colonne-liste» de géométries
-- avantage : format considéré plus pratique «tidy» et compatible avec >%>
+- format :   data.frame enrichi d’une « colonne-liste » de géométries
+- avantage : format considéré plus pratique « tidy » et compatible avec %>% 
 
 ---
 # Format des couches cartographiques (2/3)
@@ -429,7 +429,7 @@ library(rgdal)
 comm_2016 <-  readOGR(
   dsn = "data/couches_geo", 
   layer = "COM_2016_CARTElette", stringsAsFactors = FALSE,
-  verbose=F
+  encoding = "UTF-8", verbose = FALSE,
 )
 ```
 ```{r comment='#', eval=TRUE, echo=T}
@@ -441,8 +441,8 @@ str(comm_2016)
 library(sf)
 ```
 ```{r comment='#', eval=TRUE, echo=T, warning=F, message=F}
-comm_2016 <- st_read(paste0(getwd(),"/data/couches_geo/COM_2016_CARTElette.shp"),
-                     stringsAsFactors = FALSE,quiet=T) 
+comm_2016 <- st_read(paste0(getwd(), "/data/couches_geo/COM_2016_CARTElette.shp"),
+                     stringsAsFactors = FALSE, quiet = TRUE) 
 ```
 ```{r comment='#', eval=TRUE, echo=T}
 str(comm_2016)
@@ -454,24 +454,23 @@ str(comm_2016)
 # Créer des couches supra-communales (2/2)
 ```{r comment='#', eval=F, echo=T, warning=F, message=F,results='hide'}
 # chargement de la couche comm_2016
-comm_2016 <- st_read(paste0(getwd(),"/data/couches_geo/COM_2016_CARTElette.shp"),
-                     stringsAsFactors = FALSE) %>% 
-  merge(.,table_supracom_2016[,-2],by.x="insee",by.y="CODGEO",all.x=T)
+comm_2016 <- st_read(paste0(getwd(),"/data/couches_geo/COM_2016_CARTElette.shp"), 
+  stringsAsFactors = FALSE) %>% merge(table_supracom_2016[, -2],
+                                    by.x = "insee", by.y = "CODGEO", all.x = T)
 
 
 # fonction pour créer les couches supra-communales
-creer_couche <- function(maille){
-  couche <- comm_2016 %>% dplyr::select(maille) %>%
-    group_by(get(maille))  %>% summarize() %>%
-    setNames(nm=c(maille,colnames(.)[-1])) %>%
-    st_simplify( preserveTopology = FALSE, dTolerance = 10)
-  st_write(couche, paste0(getwd(), "/data/couches_geo/",maille,
-                          "_2016_CARTElette.shp"))
+creer_couche <- function(maille) {
+  couche <- comm_2016 %>% dplyr::select(maille) %>% group_by(get(maille)) %>% 
+    summarize() %>% setNames(nm = c(maille, colnames(.)[-1])) %>% 
+    st_simplify(preserveTopology = FALSE, dTolerance = 10)
+  st_write(couche, paste0(getwd(), "/data/couches_geo/", maille, 
+    "_2016_CARTElette.shp"))
 }
 
 # appliquer la fonction
-for(maille in c("DEP","REG","CV","EPCI","ZE2010",
-                "AU2010","BV2012","ARR","UU2010")){
+for (maille in c("DEP", "REG", "CV", "EPCI", "ZE2010", "AU2010", 
+  "BV2012", "ARR", "UU2010")) {
   creer_couche(maille)
 }
 ```
@@ -482,7 +481,7 @@ for(maille in c("DEP","REG","CV","EPCI","ZE2010",
 library(cartography)
 
 couche_ze <- st_read(paste0(getwd(),"/data/couches_geo/ZE2010_2016_CARTElette.shp"), stringsAsFactors = FALSE) %>% 
-  merge(.,bdd_ze,by="ZE2010",all.x=T)
+  merge(bdd_ze,by="ZE2010",all.x = TRUE)
 
 cartography_rapportHF <- function(annee, breaks, col){
 
@@ -523,8 +522,8 @@ cartography_rapportHF <- function(annee, breaks, col){
 ```{r comment='#', eval=F, echo=T, warning=F, message=F}
 couche_ze <- st_read(paste0(getwd(),
                             "/data/couches_geo/ZE2010_2016_CARTElette.shp"),
-                     stringsAsFactors = F) %>% 
-  merge(.,bdd_ze,by="ZE2010",all.x=T)
+                     stringsAsFactors = FALSE) %>% 
+  merge(bdd_ze, by="ZE2010", all.x = TRUE)
 
 library(cartography)
 
@@ -533,7 +532,7 @@ cartography_rapportHF <- function(annee, breaks, col){
 par(mar=c(1,1,1,1))
   
   choroLayer(x = couche_ze, #sf data
-             var =  paste0("rapport_FH_",annee), # var in df
+             var =  paste0("rapport_FH_", annee), # var in df
              breaks = breaks, # list of breaks
              col = col, # colors 
              border = "black", # color of the polygons borders
@@ -549,18 +548,19 @@ par(mar=c(1,1,1,1))
 # Cartes avec cartography (2/4)
 ```{r comment='#', eval=F, echo=T, warning=F, message=F}
  propSymbolsLayer(x = couche_ze,
-                   var = paste0("total_s2_",annee),  # population
+                   var = paste0("total_s2_", annee),  # population
                    symbols = "circle", # type of symbol
                    border = "grey", # color of the symbols borders
                    col= NA,
                    lwd = 2, # width of the symbols borders
                    legend.pos = "left",
-                   legend.title.txt = paste0("Nombre de\nfemmes en ",annee))
+                   legend.title.txt = paste0("Nombre de\nfemmes en ", annee))
+
   layoutLayer(title = paste0("Répartition des femmes en France en ", annee),
               sources = paste0("Insee, RP",annee,". Fond antuki/CARTElette"),
               author = "antuki with cartography",
               scale = 0, #automatic scale bar 
-              north=TRUE,
+              north = TRUE,
               frame = TRUE,
               coltitle = "black", #color of the title
               col = "#688994" # color of the frame
@@ -571,15 +571,18 @@ par(mar=c(1,1,1,1))
 ---
 # Cartes avec cartography (3/4)
 ```{r comment='#', eval=F, echo=T, warning=F, message=F}
-cartography_rapportHF(annee=2014,
-                      breaks=quantile(couche_ze$rapport_FH_2014,seq(0,1,0.20),
-                      na.rm=T) %>% replace(2,100),
-                      col=carto.pal(pal1 = "blue.pal", n1 = 1, pal2 = "red.pal", 
-                      n2 = 4))
+cartography_rapportHF(annee = 2014,
+                      breaks = quantile(couche_ze$rapport_FH_2014, 
+                                        seq(0, 1, 0.2), na.rm = TRUE) %>%
+                        replace(2, 100),
+                      col = carto.pal(pal1 = "blue.pal", 
+                                      n1 = 1,
+                                      pal2 = "red.pal",
+                                      n2 = 4))
 ```
 ---
 # Cartes avec cartography (4/4)
-```{r comment='#', eval=T, echo=F, warning=F, message=F,fig.align="center"}
+```{r comment='#', eval=T, echo=F, warning=F, message=F,fig.align="center",fig.width=12,fig.height=8}
 cartography_rapportHF(annee=2014,
                       breaks=quantile(couche_ze$rapport_FH_2014,seq(0,1,0.20),
                       na.rm=T) %>% replace(2,100),
@@ -589,61 +592,61 @@ cartography_rapportHF(annee=2014,
 ---
 # Cartes avec ggplot2 (1/4)
 ```{r comment='#', eval=F, echo=T, warning=F, message=F}
-#créer thème personnalisé
-theme_map2 <- function () 
-{ 
-  cowplot::theme_map() %+replace% 
-    theme(
-      legend.position=c(0.95,0.95), 
-      legend.justification=c(0, 1), 
-      legend.key.width=unit(1, "lines"), 
-      legend.text=element_text(size=10),
-      legend.title=element_text(size=11),
-      panel.grid.major=element_line(color='transparent'),
-      plot.title=element_text(size=12,face="bold"),
-      plot.caption=element_text(size=10,colour = "grey20"),
-      plot.margin = unit(c(0,0,0,0), "cm")
-    ) 
+# Créer thème personnalisé
+theme_map2 <- function() {
+  cowplot::theme_map() %+replace%
+    theme(legend.position = c(0.95, 0.95),
+          legend.justification = c(0, 1),
+          legend.key.width = unit(1, "lines"),
+          legend.text = element_text(size = 10),
+          legend.title = element_text(size = 11), 
+          panel.grid.major = element_line(color = "transparent"), 
+          plot.title = element_text(size = 12, face = "bold"), 
+          plot.caption = element_text(size = 10, colour = "grey20"), 
+          plot.margin = unit(c(0, 0, 0, 0), "cm"))
 }
 ```
 
 ---
 # Cartes avec ggplot2 (2/4)
 ```{r comment='#', eval=T, echo=T, warning=F, message=F}
-ggplot2_rapportHF <- function(annee,breaks,col){
+ggplot2_rapportHF <- function(annee, breaks, col){
   carto <- ggplot(
-    bind_cols(couche_ze %>%  mutate(typo= cut(get(paste0("rapport_FH_",annee)),
-              breaks=breaks,dig.lab=4,include.lowest=T)),
+    bind_cols(couche_ze %>%  mutate(typo = cut(get(paste0("rapport_FH_", annee)),
+              breaks = breaks, dig.lab = 4, include.lowest = TRUE)),
               couche_ze %>% st_centroid() %>% st_coordinates() %>%
                 as.data.frame()
   )) +
-    geom_sf(aes(fill= typo), color="black") +
-    geom_point(aes(x=X,
-                   y=Y,
-                   size= with(couche_ze,get(paste0("total_s2_",annee)))),
-               shape=1,fill=NA,color="grey",stroke = 1.5) +
-    scale_size(name=paste0("Nombre de\nfemmes en ",annee), range = c(0,18),
-               breaks=c(50000,100000,500000),labels=c("50 000","100 000",
+    geom_sf(aes(fill = typo), color = "black") +
+    geom_point(aes(x = X,
+                   y = Y,
+                   size= with(couche_ze, get(paste0("total_s2_", annee)))),
+               shape = 1, fill = NA, color = "grey", stroke = 1.5) +
+    scale_size(name = paste0("Nombre de\nfemmes en ", annee), range = c(0, 18),
+               breaks = c(50000, 100000, 500000),labels = c("50 000", "100 000",
                                                       "500 000"))+ 
-    scale_fill_manual(name=paste0("Nombre de femmes pour\n100 hommes en ",annee),
-                      values=col, na.value="#303030")+
+    scale_fill_manual(name = paste0("Nombre de femmes pour\n100 hommes en ",
+                                    annee),
+                      values = col, na.value = "#303030")+
     theme_map2() +
     labs(
       title = paste0("Répartition des femmes en France en ", annee),
-      caption = paste0("Insee, RP",annee,". Fond antuki/CARTElette")
-    )  + guides(size= guide_legend(order=1))
+      caption = paste0("Insee, RP", annee, ". Fond antuki/CARTElette")
+    )  + guides(size = guide_legend(order = 1))
   return(carto)
 }
 ```
 ---
 # Cartes avec ggplot2 (3/4)
 ```{r comment='#', eval=F, echo=T, warning=F, message=F}
-ggplot2_rapportHF(annee=2014,
-                  breaks=quantile(couche_ze$rapport_FH_2014,
-                                  seq(0,1,0.20), na.rm=T) %>% replace(2,100),
-                  col=carto.pal(pal1 = "blue.pal", n1 = 1, pal2 = "red.pal",
-                                n2 = 4)
-                  )
+ggplot2_rapportHF(annee = 2014,
+                      breaks = quantile(couche_ze$rapport_FH_2014, 
+                                        seq(0, 1, 0.2), na.rm = TRUE) %>%
+                        replace(2, 100),
+                      col = carto.pal(pal1 = "blue.pal", 
+                                      n1 = 1,
+                                      pal2 = "red.pal",
+                                      n2 = 4))
 ```
 ---
 # Cartes avec ggplot2 (4/4)
@@ -658,17 +661,17 @@ ggplot2_rapportHF(annee=2014,
 # Cartes animées avec magick (1/2)
 ```{r comment='#', eval=F, echo=T, warning=F, message=F}
 library(magick)
+
 img <- image_graph(800, 500, res = 96)
 
-out <- lapply(c(1975,1999,2014), function(annee){
-  p <- ggplot2_rapportHF(annee=annee,
-                      breaks=quantile(c(couche_ze$rapport_FH_1975,
-  couche_ze$rapport_FH_1999,couche_ze$rapport_FH_2014),seq(0,1,0.20), na.rm=T)
-                      %>% replace(2,100),
-                      col=carto.pal(pal1 = "blue.pal", n1 = 1, pal2 = "red.pal",
-                                    n2 = 4)
-    )
- print(p)
+out <- lapply(c(1975, 1999, 2014), function(annee) {
+  p <- ggplot2_rapportHF(annee = annee,
+                         breaks = quantile(c(couche_ze$rapport_FH_1975, 
+    couche_ze$rapport_FH_1999, couche_ze$rapport_FH_2014), 
+    seq(0, 1, 0.2), na.rm = TRUE) %>% replace(2, 100),
+    col = carto.pal(pal1 = "blue.pal", 
+    n1 = 1, pal2 = "red.pal", n2 = 4))
+  print(p)
 })
 
 animation <- image_animate(img, fps = 0.5)
@@ -684,75 +687,68 @@ image_write(animation, "carte_animee.gif")
 library(rgdal)
 library(ggiraph)
 
-couche_ze_rgdal <- 
-  merge(
-    fortify(
-      readOGR(
-        dsn = "data/couches_geo", 
-        layer = "ZE2010_2016_CARTElette", stringsAsFactors = FALSE
-      ), region="ZE2010"), 
-    bdd_ze, by.x="id",by.y="ZE2010",all.x=T) 
+couche_ze_rgdal <- merge(fortify(
+  rgeos::gBuffer(readOGR(dsn = "data/couches_geo", 
+  layer = "ZE2010_2016_CARTElette", stringsAsFactors = FALSE), 
+  width = 0, byid = TRUE), region = "ZE2010"), bdd_ze, by.x = "id", 
+  by.y = "ZE2010", all.x = TRUE)
 
-couche_ze_rgdal<-  couche_ze_rgdal %>% 
-  mutate(typo= cut(get(paste0("rapport_FH_",2014)),
-                   breaks=quantile(couche_ze$rapport_FH_2014,
-                                   seq(0,1,0.20), na.rm=T) %>%
-                     replace(2,100),dig.lab=4,include.lowest=T))
+couche_ze_rgdal <- couche_ze_rgdal %>% mutate(typo = cut(get(
+  paste0("rapport_FH_", 2014)),
+  breaks = quantile(couche_ze$rapport_FH_2014, seq(0, 1, 0.2),
+                    na.rm = TRUE) %>% replace(2, 100), dig.lab = 4, 
+  include.lowest = TRUE))
 ```
 ```{r comment='#', eval=T, echo=F, warning=F, message=F,include=F}
 library(rgdal)
 library(ggiraph)
 
-couche_ze_rgdal <- 
-  merge(
-    fortify(
-      rgeos::gBuffer(
-      readOGR(
-        dsn = "data/couches_geo", 
-        layer = "ZE2010_2016_CARTElette", stringsAsFactors = FALSE
-      ),width=0,byid=T),
-      region="ZE2010")
-     , 
-    bdd_ze, by.x="id",by.y="ZE2010",all.x=T) 
+couche_ze_rgdal <- merge(fortify(
+  rgeos::gBuffer(readOGR(dsn = "data/couches_geo", 
+  layer = "ZE2010_2016_CARTElette", stringsAsFactors = FALSE), 
+  width = 0, byid = TRUE), region = "ZE2010"), bdd_ze, by.x = "id", 
+  by.y = "ZE2010", all.x = TRUE)
 
-couche_ze_rgdal<-  couche_ze_rgdal %>% 
-  mutate(typo= cut(get(paste0("rapport_FH_",2014)),
-                   breaks=quantile(couche_ze$rapport_FH_2014,
-                                   seq(0,1,0.20), na.rm=T) %>%
-                     replace(2,100),dig.lab=4,include.lowest=T))
+couche_ze_rgdal <- couche_ze_rgdal %>% mutate(typo = cut(get(
+  paste0("rapport_FH_", 2014)),
+  breaks = quantile(couche_ze$rapport_FH_2014, seq(0, 1, 0.2),
+                    na.rm = TRUE) %>% replace(2, 100), dig.lab = 4, 
+  include.lowest = TRUE))
+
 ```
 ---
 # Cartes interactives avec ggiraph (2/4)
 ```{r comment='#', eval=T, echo=T, warning=F, message=F,fig.align="center"}
-ggiraph_rapportHF <- function(annee,breaks,col){
+ggiraph_rapportHF <- function(annee, breaks, col) {
   
-  carto <- ggplot(couche_ze_rgdal,aes(x=long,y=lat)) +
-    geom_map_interactive(map = couche_ze_rgdal,
-                         mapping=aes(map_id=id,tooltip=paste0("Ratio : ",
-    round(get(paste0("rapport_FH_",annee)),0)), fill=typo),color=NA) +
-    coord_fixed()+
-    scale_fill_manual(name=paste0("Nombre de femmes pour\n100 hommes en ",annee)
-                      ,values=col, na.value="#303030")+
-    cowplot::theme_map()+
-    labs(
-      title = paste0("Répartition des femmes en France en ", annee),
-      caption = paste0("Insee, RP",annee,". Fond antuki/CARTElette")
-    ) 
+  carto <- ggplot(couche_ze_rgdal, aes(x = long, y = lat)) + 
+    geom_map_interactive(map = couche_ze_rgdal, mapping = aes(map_id = id, 
+      tooltip = paste0("Ratio : ", round(get(paste0("rapport_FH_", 
+        annee)), 0)), fill = typo), color = NA) + coord_fixed() + 
+    scale_fill_manual(name = paste0("Nombre de femmes pour\n100 hommes en ", 
+      annee), values = col, na.value = "#303030") + cowplot::theme_map() + 
+    labs(title = paste0("Répartition des femmes en France en ", 
+      annee), caption = paste0("Insee, RP", annee, ". Fond antuki/CARTElette"))
   
-  ggiraph(code = {print(carto)},
-          tooltip_extra_css = "background-color:black;color:white;font-style:
-          italic;padding:10px;border-radius:10px 20px 10px 20px;",
-          tooltip_opacity = .75,width=0.9,width_svg=8,height_svg = 6)
+  ggiraph(code = {
+    print(carto)
+  }, tooltip_extra_css = "background-color:black;color:white;font-style:
+      italic;padding:10px;border-radius:10px 20px 10px 20px;", 
+    tooltip_opacity = 0.75, width = 0.9, width_svg = 8, height_svg = 6)
 }
 ```
 ---
 # Cartes interactives avec ggiraph (3/4)
 ```{r comment='#', eval=F, echo=T, warning=F, message=F}
-ggiraph_rapportHF(annee=2014,
-                  breaks=quantile(couche_ze$rapport_FH_2014,seq(0,1,0.20),
-                                  na.rm=T) %>% replace(2,100),
-                  col=carto.pal(pal1 = "blue.pal", n1 = 1, pal2 = "red.pal",
-                                n2 = 4))
+ggiraph_rapportHF(annee = 2014,
+                      breaks = quantile(couche_ze$rapport_FH_2014, 
+                                        seq(0, 1, 0.2), na.rm = TRUE) %>%
+                        replace(2, 100),
+                      col = carto.pal(pal1 = "blue.pal", 
+                                      n1 = 1,
+                                      pal2 = "red.pal",
+                                      n2 = 4))
+
 
 ```
 ---
@@ -767,25 +763,25 @@ ggiraph_rapportHF(annee=2014,breaks=quantile(couche_ze$rapport_FH_2014,seq(0,1,0
 library(leaflet)
 leaflet_rapportHF <- function(){
   carto <- leaflet(bind_cols(couche_ze,
-                    couche_ze %>%  st_centroid() %>% 
-                    st_transform(., '+proj=longlat +ellps=GRS80 +no_defs') %>%
-                    st_coordinates() %>% as.data.frame()) %>%
-                     filter(!substr(ZE2010,1,2)%in%c("01","02","03","04"))) %>%
+                             couche_ze %>%  st_centroid() %>% 
+                               st_transform('+proj=longlat +ellps=GRS80 +no_defs') %>%
+                               st_coordinates() %>% as.data.frame()) %>%
+                     filter(!substr(ZE2010, 1, 2)%in%c("01", "02", "03", "04"))) %>%
     addTiles('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png') %>%
     addCircles(lng = ~X, lat = ~Y, weight = 1,
                radius = ~sqrt(total_s2_2014)*50,
-               popup = ~paste(nom," : ", round(total_s2_2014,0)),
+               popup = ~paste0(nom, " : ", round(total_s2_2014, 0)),
                color = ~colorQuantile(carto.pal(pal1 = "blue.pal",
-                       n1 = 1, pal2 = "red.pal", n2 = 4),
-                      domain=couche_ze$rapport_FH_2014, n = 5)
-                      (rapport_FH_2014),
+                                                n1 = 1, pal2 = "red.pal", n2 = 4),
+                                      domain = couche_ze$rapport_FH_2014, n = 5)
+               (rapport_FH_2014),
                fillOpacity = 0.7) %>% 
     addLegend("topright", 
               colors = carto.pal(pal1 = "blue.pal", n1 = 1,  pal2 = "red.pal",
                                  n2 = 4),
               labels = paste0("[",round(quantile(couche_ze$rapport_FH_2014,
-              seq(0,1,0.20),na.rm=T),1),";",c(round(quantile(
-              couche_ze$rapport_FH_2014,seq(0,1,0.20),na.rm=T),1)[-1],NA),")")[-6],
+                                                 seq(0,1,0.20),na.rm=T),1),";",c(round(quantile(
+                                                   couche_ze$rapport_FH_2014,seq(0,1,0.20),na.rm=T),1)[-1],NA),")")[-6],
               title = "Nombre de<br>femmes pour<br>100 hommes<br>en 2014",
               opacity = 1) 
   
@@ -799,13 +795,14 @@ library(leaflet)
 leaflet_rapportHF <- function(){
   carto <- leaflet(bind_cols(couche_ze,
                     couche_ze %>%  st_centroid() %>% 
-                    st_transform(., '+proj=longlat +ellps=GRS80 +no_defs') %>%
+                    st_transform('+proj=longlat +ellps=GRS80 +no_defs') %>%
                     st_coordinates() %>% as.data.frame()) %>%
-                     filter(!substr(ZE2010,1,2)%in%c("01","02","03","04"))) %>%
+                     filter(!substr(ZE2010, 1, 2) %in% 
+                              c("01", "02", "03", "04"))) %>%
     addTiles('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png') %>%
     addCircles(lng = ~X, lat = ~Y, weight = 1,
                radius = ~sqrt(total_s2_2014)*50,
-               popup = ~paste(nom," : ", round(total_s2_2014,0)),
+               popup = ~paste(nom," : ", round(total_s2_2014, 0)),
                color = ~colorQuantile(carto.pal(pal1 = "blue.pal",
                        n1 = 1, pal2 = "red.pal", n2 = 4),
                       domain=couche_ze$rapport_FH_2014, n = 5)
@@ -819,9 +816,10 @@ carto <- carto %>%
   addLegend("topright", 
             colors = carto.pal(pal1 = "blue.pal", n1 = 1,  pal2 = "red.pal",
                                n2 = 4),
-            labels = paste0("[",round(quantile(couche_ze$rapport_FH_2014,
-            seq(0,1,0.20),na.rm=T),1),";",c(round(quantile(
-            couche_ze$rapport_FH_2014,seq(0,1,0.20),na.rm=T),1)[-1],NA),")")[-6],
+            labels = paste0("[", round(quantile(couche_ze$rapport_FH_2014,
+            seq(0,1,0.20),na.rm=TRUE), 1), ";", c(round(quantile(
+            couche_ze$rapport_FH_2014,seq(0, 1, 0.20),na.rm=TRUE), 1)[-1],
+            NA),")")[-6],
             title = "Nombre de<br>femmes pour<br>100 hommes<br>en 2014",
             opacity = 1) 
   
