@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Manipulation de données communales en historique avec le package <i class="fab  fa-r-project "></i> COGugaison</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Kim Antunez (@antuki13)" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies-fonts.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <link href="libs/vis/vis.css" rel="stylesheet" />
+    <script src="libs/vis/vis.min.js"></script>
+    <script src="libs/visNetwork-binding/visNetwork.js"></script>
+    <script src="libs/d3/d3.min.js"></script>
+    <script src="libs/d3-lasso/d3-lasso.min.js"></script>
+    <link href="libs/ggiraph/styles.css" rel="stylesheet" />
+    <script src="libs/ggiraph/ggiraph_utils.js"></script>
+    <script src="libs/ggiraph/ggiraph_over_effect.js"></script>
+    <script src="libs/ggiraph/ggiraph_zoom.js"></script>
+    <script src="libs/ggiraph/ggiraph_tooltip.js"></script>
+    <script src="libs/ggiraph/ggiraph_selector.js"></script>
+    <script src="libs/ggiraph-binding/ggiraph.js"></script>
+    <script src="libs/svg_1/scripts_svg_1.js"></script>
+    <link rel="stylesheet" href="antuki.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Manipulation de données communales en historique avec le package <i class="fab  fa-r-project "></i> COGugaison
+### Kim Antunez (<span class="citation">@antuki13</span>)
+### 7ème rencontre R - Rennes le 06 juillet 2018
+
+---
+
+
+
+
+background-size: 100%
+class: inverse, center, middle
+
+# 1. Introduction sur les géographies communales
+---
+# Code Officiel Géographique (COG)
+Le **Code officiel géographique** (COG) est un document de référence publié par l’**Insee** qui rassemble les **codifications (numérotations et libellés) des communes**, des cantons, des arrondissements, des départements, des régions...
+
+
+Ce code est **révisé annuellement**, en fonction notamment des **fusions et associations** de communes ou de territoires, des **défusions** et des **changements de dénomination**.
+---
+# Types de modifications communales (1/5)
+<div id="htmlwidget-baff7eed619ad242da5e" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-baff7eed619ad242da5e">{"x":{"nodes":{"id":["76095_2011","76108_2011","76108_2013","76095_1968","76095_2014","76108_1968","76108_2012","76108_2014","76095_2018","76108_2018"],"comm":["76095","76108","76108","76095","76095","76108","76108","76108","76095","76108"],"COG":["2011","2011","2013","1968","2014","1968","2012","2014","2018","2018"],"label":["76095\n(2011)","76108\n(2011)","76108\n(2013)","76095\n(1968)","76095\n(2014)","76108\n(1968)","76108\n(2012)","76108\n(2014)","76095\n(2018)","76108\n(2018)"],"level":[2,2,4,1,5,1,3,5,6,6],"pop":["8415","12872","21107","7016","8268","8648","21270","12847","8222","13255"],"libgeo":["Bihorel","Bois-Guillaume","Bois-Guillaume-Bihorel","BIHOREL","Bihorel","BOIS-GUILLAUME","Bois-Guillaume - Bihorel","Bois-Guillaume","Bihorel","Bois-Guillaume"],"ratio":[1,1,0.391569973952167,0.608430026047833,1,1,1,1,1,1],"title":["<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-76095&debut=0>76095<\/a> Bihorel<\/b><br>Population : 8415 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-76108&debut=0>76108<\/a> Bois-Guillaume<\/b><br>Population : 12872 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-76108&debut=0>76108<\/a> Bois-Guillaume-Bihorel<\/b><br>Population : 21107 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-76095&debut=0>76095<\/a> BIHOREL<\/b><br>Population : 7016 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-76095&debut=0>76095<\/a> Bihorel<\/b><br>Population : 8268 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-76108&debut=0>76108<\/a> BOIS-GUILLAUME<\/b><br>Population : 8648 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-76108&debut=0>76108<\/a> Bois-Guillaume - Bihorel<\/b><br>Population : 21270 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-76108&debut=0>76108<\/a> Bois-Guillaume<\/b><br>Population : 12847 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-76095&debut=0>76095<\/a> Bihorel<\/b><br>Population : 8222 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-76108&debut=0>76108<\/a> Bois-Guillaume<\/b><br>Population : 13255 hab."]},"edges":{"from":["76095_2011","76108_2011","76108_2013","76108_2013","76095_1968","76095_2014","76108_1968","76108_2012","76108_2014"],"to":["76108_2012","76108_2012","76095_2014","76108_2014","76095_2011","76095_2018","76108_2011","76108_2013","76108_2018"],"LIBGEO":["Bihorel","Bois-Guillaume","Bois-Guillaume-Bihorel","Bois-Guillaume-Bihorel",null,null,null,null,null],"POP":[8415,12872,21107,21107,null,null,null,null,null],"annee":["2012-01-01","2012-01-01","2014-01-01","2014-01-01",null,null,null,null,null],"typemodif":["f","f","d","d",null,null,null,null,null],"ratio":[1,1,0.391569973952167,0.608430026047833,1,1,1,1,1],"arrows.middle.enabled":[true,true,true,true,false,false,false,false,false],"dashes":[false,false,false,false,true,true,true,true,true],"value":[1,1,0.391569973952167,0.608430026047833,0.2,0.2,0.2,0.2,0.2],"title":["<b>fusion<\/b><br>Date : 01 janv. 2012<br>","<b>fusion<\/b><br>Date : 01 janv. 2012<br>","<b>défusion<\/b> (ratio : 0.39)<br>Date : 01 janv. 2014<br>","<b>défusion<\/b> (ratio : 0.61)<br>Date : 01 janv. 2014<br>",null,null,null,null,null]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"ellipse","color":{"border":"black","background":"#000000","highlight":{"border":"#000000","background":"#000000"}},"fixed":{"allowedToMoveX":true,"allowedToMoveY":true},"font":{"face":"verdana","color":"#FFFFFF","size":20}},"manipulation":{"enabled":false},"edges":{"width":10,"arrows":{"middle":{"enabled":true,"scaleFactor":3}},"color":{"color":"#2AA198"},"shadow":false},"layout":{"hierarchical":{"enabled":true,"levelSeparation":500,"direction":"LR"},"randomSeed":12},"interaction":{"hoverConnectedEdges":false,"navigationButtons":true,"selectable":false,"selectConnectedEdges":false},"physics":{"hierarchicalRepulsion":{"centralGravity":0,"springConstant":0,"nodeDistance":0}},"configure":{"enabled":false}},"groups":null,"width":"100%","height":"500px","idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
+---
+# Types de modifications communales (2/5)
+<div id="htmlwidget-e3325e5774afb0c1e4df" style="width:100%;height:500px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e3325e5774afb0c1e4df">{"x":{"nodes":{"id":["14010_1968","14067_1968","14234_1968","14295_1968","14314_1968","14363_1968","14447_1968","14472_1968","14624_1968","14697_1968","14624_1982","14697_2014","14081_2016","14099_2016","14331_2016","14433_2016","14450_2016","14472_2016","14489_2016","14580_2016","14616_2016","14654_2016","14688_2016","14729_2016","14750_2016","14081_1968","14099_1968","14331_1968","14433_1968","14450_1968","14489_1968","14580_1968","14616_1968","14654_1968","14654_2017","14688_1968","14729_1968","14750_1968","14624_1975","14697_1990","14472_2015","14654_2018"],"comm":["14010","14067","14234","14295","14314","14363","14447","14472","14624","14697","14624","14697","14081","14099","14331","14433","14450","14472","14489","14580","14616","14654","14688","14729","14750","14081","14099","14331","14433","14450","14489","14580","14616","14654","14654","14688","14729","14750","14624","14697","14472","14654"],"COG":["1968","1968","1968","1968","1968","1968","1968","1968","1968","1968","1982","2014","2016","2016","2016","2016","2016","2016","2016","2016","2016","2016","2016","2016","2016","1968","1968","1968","1968","1968","1968","1968","1968","1968","2017","1968","1968","1968","1975","1990","2015","2018"],"label":["14010\n(1968)","14067\n(1968)","14234\n(1968)","14295\n(1968)","14314\n(1968)","14363\n(1968)","14447\n(1968)","14472\n(1968)","14624\n(1968)","14697\n(1968)","14624\n(1982)","14697\n(2014)","14081\n(2016)","14099\n(2016)","14331\n(2016)","14433\n(2016)","14450\n(2016)","14472\n(2016)","14489\n(2016)","14580\n(2016)","14616\n(2016)","14654\n(2016)","14688\n(2016)","14729\n(2016)","14750\n(2016)","14081\n(1968)","14099\n(1968)","14331\n(1968)","14433\n(1968)","14450\n(1968)","14489\n(1968)","14580\n(1968)","14616\n(1968)","14654\n(1968)","14654\n(2017)","14688\n(1968)","14729\n(1968)","14750\n(1968)","14624\n(1975)","14697\n(1990)","14472\n(2015)","14654\n(2018)"],"level":[1,1,1,1,1,1,1,1,1,1,3,5,7,7,7,7,7,7,7,7,7,7,7,7,7,1,1,1,1,1,1,1,1,1,8,1,1,1,2,4,6,9],"pop":["148","136","84","76","108","236","140","172","172","88","1452","1551","233","290","267","152","195","1579","240","102","378","3539","312","212","300","252","312","188","132","268","224","168","284","3644","7835","216","196","304","1510","1372","1574","7835"],"libgeo":["AMMEVILLE","BERVILLE","ECOTS","GARNETOT","GRANDMESNIL","LIEURY","MONTPINCON","NOTRE DAME DE FRESNAY","SAINT-MARTIN-DE-FRESNAY","TÔTES","OUDON","L'Oudon","Boissey","Bretteville-sur-Dives","Hiéville","Mittois","Montviette","L'Oudon","Ouville-la-Bien-Tournée","Saint-Georges-en-Auge","Sainte-Marguerite-de-Viette","Saint-Pierre-sur-Dives","Thiéville","Vaudeloges","Vieux-Pont-en-Auge","BOISSEY","BRETTEVILLE-SUR-DIVES","HIEVILLE","MITTOIS","MONTVIETTE","OUVILLE-LA-BIEN-TOURNEE","SAINT-GEORGES-EN-AUGE","SAINTE-MARGUERITE-DE-VIETTE","SAINT-PIERRE-SUR-DIVES","Saint-Pierre-en-Auge","THIEVILLE","VAUDELOGES","VIEUX-PONT-EN-AUGE","OUDON","OUDON","L'Oudon","Saint-Pierre-en-Auge"],"ratio":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"title":["<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14010&debut=0>14010<\/a> AMMEVILLE<\/b><br>Population : 148 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14067&debut=0>14067<\/a> BERVILLE<\/b><br>Population : 136 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14234&debut=0>14234<\/a> ECOTS<\/b><br>Population : 84 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14295&debut=0>14295<\/a> GARNETOT<\/b><br>Population : 76 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14314&debut=0>14314<\/a> GRANDMESNIL<\/b><br>Population : 108 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14363&debut=0>14363<\/a> LIEURY<\/b><br>Population : 236 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14447&debut=0>14447<\/a> MONTPINCON<\/b><br>Population : 140 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14472&debut=0>14472<\/a> NOTRE DAME DE FRESNAY<\/b><br>Population : 172 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14624&debut=0>14624<\/a> SAINT-MARTIN-DE-FRESNAY<\/b><br>Population : 172 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14697&debut=0>14697<\/a> TÔTES<\/b><br>Population : 88 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14624&debut=0>14624<\/a> OUDON<\/b><br>Population : 1452 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14697&debut=0>14697<\/a> L'Oudon<\/b><br>Population : 1551 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14081&debut=0>14081<\/a> Boissey<\/b><br>Population : 233 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14099&debut=0>14099<\/a> Bretteville-sur-Dives<\/b><br>Population : 290 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14331&debut=0>14331<\/a> Hiéville<\/b><br>Population : 267 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14433&debut=0>14433<\/a> Mittois<\/b><br>Population : 152 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14450&debut=0>14450<\/a> Montviette<\/b><br>Population : 195 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14472&debut=0>14472<\/a> L'Oudon<\/b><br>Population : 1579 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14489&debut=0>14489<\/a> Ouville-la-Bien-Tournée<\/b><br>Population : 240 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14580&debut=0>14580<\/a> Saint-Georges-en-Auge<\/b><br>Population : 102 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14616&debut=0>14616<\/a> Sainte-Marguerite-de-Viette<\/b><br>Population : 378 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14654&debut=0>14654<\/a> Saint-Pierre-sur-Dives<\/b><br>Population : 3539 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14688&debut=0>14688<\/a> Thiéville<\/b><br>Population : 312 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14729&debut=0>14729<\/a> Vaudeloges<\/b><br>Population : 212 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14750&debut=0>14750<\/a> Vieux-Pont-en-Auge<\/b><br>Population : 300 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14081&debut=0>14081<\/a> BOISSEY<\/b><br>Population : 252 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14099&debut=0>14099<\/a> BRETTEVILLE-SUR-DIVES<\/b><br>Population : 312 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14331&debut=0>14331<\/a> HIEVILLE<\/b><br>Population : 188 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14433&debut=0>14433<\/a> MITTOIS<\/b><br>Population : 132 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14450&debut=0>14450<\/a> MONTVIETTE<\/b><br>Population : 268 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14489&debut=0>14489<\/a> OUVILLE-LA-BIEN-TOURNEE<\/b><br>Population : 224 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14580&debut=0>14580<\/a> SAINT-GEORGES-EN-AUGE<\/b><br>Population : 168 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14616&debut=0>14616<\/a> SAINTE-MARGUERITE-DE-VIETTE<\/b><br>Population : 284 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14654&debut=0>14654<\/a> SAINT-PIERRE-SUR-DIVES<\/b><br>Population : 3644 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14654&debut=0>14654<\/a> Saint-Pierre-en-Auge<\/b><br>Population : 7835 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14688&debut=0>14688<\/a> THIEVILLE<\/b><br>Population : 216 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14729&debut=0>14729<\/a> VAUDELOGES<\/b><br>Population : 196 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14750&debut=0>14750<\/a> VIEUX-PONT-EN-AUGE<\/b><br>Population : 304 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14624&debut=0>14624<\/a> OUDON<\/b><br>Population : 1510 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14697&debut=0>14697<\/a> OUDON<\/b><br>Population : 1372 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14472&debut=0>14472<\/a> L'Oudon<\/b><br>Population : 1574 hab.","<b><a target=\"_blank\" href=https://www.insee.fr/fr/recherche/recherche-geographique?geo=COM-14654&debut=0>14654<\/a> Saint-Pierre-en-Auge<\/b><br>Population : 7835 hab."]},"edges":{"from":["14010_1968","14067_1968","14234_1968","14295_1968","14314_1968","14363_1968","14447_1968","14472_1968","14624_1968","14697_1968","14624_1982","14697_2014","14081_2016","14099_2016","14331_2016","14433_2016","14450_2016","14472_2016","14489_2016","14580_2016","14616_2016","14654_2016","14688_2016","14729_2016","14750_2016","14081_1968","14099_1968","14331_1968","14433_1968","14450_1968","14489_1968","14580_1968","14616_1968","14654_1968","14654_2017","14688_1968","14729_1968","14750_1968","14624_1975","14697_1990","14472_2015"],"to":["14624_1975","14624_1975","14624_1975","14624_1975","14624_1975","14624_1975","14624_1975","14624_1975","14624_1975","14624_1975","14697_1990","14472_2015","14654_2017","14654_2017","14654_2017","14654_2017","14654_2017","14654_2017","14654_2017","14654_2017","14654_2017","14654_2017","14654_2017","14654_2017","14654_2017","14081_2016","14099_2016","14331_2016","14433_2016","14450_2016","14489_2016","14580_2016","14616_2016","14654_2016","14654_2018","14688_2016","14729_2016","14750_2016","14624_1982","14697_2014","14472_2016"],"LIBGEO":["AMMEVILLE","BERVILLE","ECOTS","GARNETOT","GRANDMESNIL","LIEURY","MONTPINCON","NOTRE DAME DE FRESNAY","SAINT-MARTIN-DE-FRESNAY","TÔTES","OUDON","L'Oudon","Boissey","Bretteville-sur-Dives","Hiéville","Mittois","Montviette","L'Oudon","Ouville-la-Bien-Tournée","Saint-Georges-en-Auge","Sainte-Marguerite-de-Viette","Saint-Pierre-sur-Dives","Thiéville","Vaudeloges","Vieux-Pont-en-Auge",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"POP":[148,136,84,76,108,236,140,172,172,88,1452,1551,233,290,267,152,195,1579,240,102,378,3539,312,212,300,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"annee":["1973-01-01","1973-01-01","1973-01-01","1973-01-01","1973-01-01","1973-01-01","1973-01-01","1973-01-01","1973-01-01","1973-01-01","1990-02-01","2014-01-07","2017-01-01","2017-01-01","2017-01-01","2017-01-01","2017-01-01","2017-01-01","2017-01-01","2017-01-01","2017-01-01","2017-01-01","2017-01-01","2017-01-01","2017-01-01",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"typemodif":["f","f","f","f","f","f","f","f","f","f","c","c","f","f","f","f","f","f","f","f","f","f","f","f","f",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"ratio":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"arrows.middle.enabled":[true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],"dashes":[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true],"value":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2],"title":["<b>fusion<\/b><br>Date : 01 janv. 1973<br>","<b>fusion<\/b><br>Date : 01 janv. 1973<br>","<b>fusion<\/b><br>Date : 01 janv. 1973<br>","<b>fusion<\/b><br>Date : 01 janv. 1973<br>","<b>fusion<\/b><br>Date : 01 janv. 1973<br>","<b>fusion<\/b><br>Date : 01 janv. 1973<br>","<b>fusion<\/b><br>Date : 01 janv. 1973<br>","<b>fusion<\/b><br>Date : 01 janv. 1973<br>","<b>fusion<\/b><br>Date : 01 janv. 1973<br>","<b>fusion<\/b><br>Date : 01 janv. 1973<br>","<b>changement de code<\/b><br>Date : 01 févr. 1990<br>","<b>changement de code<\/b><br>Date : 07 janv. 2014<br>","<b>fusion<\/b><br>Date : 01 janv. 2017<br>","<b>fusion<\/b><br>Date : 01 janv. 2017<br>","<b>fusion<\/b><br>Date : 01 janv. 2017<br>","<b>fusion<\/b><br>Date : 01 janv. 2017<br>","<b>fusion<\/b><br>Date : 01 janv. 2017<br>","<b>fusion<\/b><br>Date : 01 janv. 2017<br>","<b>fusion<\/b><br>Date : 01 janv. 2017<br>","<b>fusion<\/b><br>Date : 01 janv. 2017<br>","<b>fusion<\/b><br>Date : 01 janv. 2017<br>","<b>fusion<\/b><br>Date : 01 janv. 2017<br>","<b>fusion<\/b><br>Date : 01 janv. 2017<br>","<b>fusion<\/b><br>Date : 01 janv. 2017<br>","<b>fusion<\/b><br>Date : 01 janv. 2017<br>",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"ellipse","color":{"border":"black","background":"#000000","highlight":{"border":"#000000","background":"#000000"}},"fixed":{"allowedToMoveX":true,"allowedToMoveY":true},"font":{"face":"verdana","color":"#FFFFFF","size":20}},"manipulation":{"enabled":false},"edges":{"width":10,"arrows":{"middle":{"enabled":true,"scaleFactor":3}},"color":{"color":"#2AA198"},"shadow":false},"layout":{"hierarchical":{"enabled":true,"levelSeparation":500,"direction":"LR"},"randomSeed":12},"interaction":{"hoverConnectedEdges":false,"navigationButtons":true,"selectable":false,"selectConnectedEdges":false},"physics":{"hierarchicalRepulsion":{"centralGravity":0,"springConstant":0,"nodeDistance":0}},"configure":{"enabled":false}},"groups":null,"width":"100%","height":"500px","idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
+---
+# Types de modifications communales (3/5)
+- les indicateurs varient d'une année sur l'autre pour une même commune
+- la liste des communes change chaque année
+&lt;center&gt;&lt;img src="img/ex_COG.png" height="320px"&gt;&lt;/center&gt;
+Comment fait-on pour rassembler dans un unique data.frame des données produites à des millésimes différents ?
+
+--
+
+&amp;rarr; **Je dois (au choix) savoir transformer les pop2011 en COG2012 ou les pop2012 en COG2011** 
+---
+# Types de modifications communales (4/5)
+- Variables numériques et fusions = **FACILE**
+- *Question : Quelle situation pour la population (2011) en COG 2012 ?*
+&lt;center&gt;&lt;img src="img/varnum_fusion2.png" height="400px"&gt;&lt;/center&gt;
+---
+# Types de modifications communales (5/5)
+- Variables numériques et défusions = **DIFFICILE**
+- *Question : Quelle situation pour la population (2013) en COG 2014 ?*
+&lt;center&gt;&lt;img src="img/varnum_defusion2.png" height="400px"&gt;&lt;/center&gt;
+
+
+
+---
+# Les différents évènements depuis 1968
+<div id="htmlwidget-378e4454a7c8b698c3c6" style="width:504px;height:504px;" class="ggiraph html-widget"></div>
+<script type="application/json" data-for="htmlwidget-378e4454a7c8b698c3c6">{"x":{"html":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"svg_1\" viewBox=\"0 0 432.00 360.00\">\n  <g>\n    <defs>\n      <clipPath id=\"cl1_0\">\n        <rect x=\"0.00\" y=\"360.00\" width=\"0.00\" height=\"72.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\" id=\"1\" clip-path=\"url(#cl1_0)\" fill=\"#FFFFFF\" fill-opacity=\"1\" stroke-width=\"0.75\" stroke=\"#FFFFFF\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <defs>\n      <clipPath id=\"cl1_1\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id=\"cl1_2\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"180.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id=\"cl1_3\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id=\"cl1_4\">\n        <rect x=\"68.44\" y=\"6.97\" width=\"356.59\" height=\"126.72\"/>\n      <\/clipPath>\n    <\/defs>\n    <polyline points=\"84.65,12.73 130.03,73.98 175.41,72.12 227.28,66.55 285.63,65.85 343.98,65.67 350.47,65.62 356.95,65.62 363.43,65.72 369.92,65.58 376.40,66.46 382.88,66.41 389.37,67.53 395.85,103.42 402.33,125.20 408.82,127.94\" id=\"2\" clip-path=\"url(#cl1_4)\" fill=\"none\" stroke-width=\"2.13396\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <circle cx=\"84.65\" cy=\"12.73\" r=\"1.87pt\" id=\"3\" clip-path=\"url(#cl1_4)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"130.03\" cy=\"73.98\" r=\"1.87pt\" id=\"4\" clip-path=\"url(#cl1_4)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"175.41\" cy=\"72.12\" r=\"1.87pt\" id=\"5\" clip-path=\"url(#cl1_4)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"227.28\" cy=\"66.55\" r=\"1.87pt\" id=\"6\" clip-path=\"url(#cl1_4)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"285.63\" cy=\"65.85\" r=\"1.87pt\" id=\"7\" clip-path=\"url(#cl1_4)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"343.98\" cy=\"65.67\" r=\"1.87pt\" id=\"8\" clip-path=\"url(#cl1_4)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"350.47\" cy=\"65.62\" r=\"1.87pt\" id=\"9\" clip-path=\"url(#cl1_4)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"356.95\" cy=\"65.62\" r=\"1.87pt\" id=\"10\" clip-path=\"url(#cl1_4)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"363.43\" cy=\"65.72\" r=\"1.87pt\" id=\"11\" clip-path=\"url(#cl1_4)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"369.92\" cy=\"65.58\" r=\"1.87pt\" id=\"12\" clip-path=\"url(#cl1_4)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"376.40\" cy=\"66.46\" r=\"1.87pt\" id=\"13\" clip-path=\"url(#cl1_4)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"382.88\" cy=\"66.41\" r=\"1.87pt\" id=\"14\" clip-path=\"url(#cl1_4)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"389.37\" cy=\"67.53\" r=\"1.87pt\" id=\"15\" clip-path=\"url(#cl1_4)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"395.85\" cy=\"103.42\" r=\"1.87pt\" id=\"16\" clip-path=\"url(#cl1_4)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"402.33\" cy=\"125.20\" r=\"1.87pt\" id=\"17\" clip-path=\"url(#cl1_4)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"408.82\" cy=\"127.94\" r=\"1.87pt\" id=\"18\" clip-path=\"url(#cl1_4)\" fill=\"#000000\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <defs>\n      <clipPath id=\"cl1_5\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <polyline points=\"68.44,133.70 68.44,6.97\" id=\"19\" clip-path=\"url(#cl1_5)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"square\"/>\n    <g clip-path=\"url(#cl1_5)\">\n      <text x=\"28.59\" y=\"102.38\" id=\"20\" font-size=\"9.00pt\" font-family=\"Arial\">36000<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_5)\">\n      <text x=\"28.59\" y=\"55.94\" id=\"21\" font-size=\"9.00pt\" font-family=\"Arial\">37000<\/text>\n    <\/g>\n    <polyline points=\"64.95,98.08 68.44,98.08\" id=\"22\" clip-path=\"url(#cl1_5)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"64.95,51.65 68.44,51.65\" id=\"23\" clip-path=\"url(#cl1_5)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"68.44,133.70 425.03,133.70\" id=\"24\" clip-path=\"url(#cl1_5)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"square\"/>\n    <polyline points=\"97.61,137.18 97.61,133.70\" id=\"25\" clip-path=\"url(#cl1_5)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"130.03,137.18 130.03,133.70\" id=\"26\" clip-path=\"url(#cl1_5)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"162.45,137.18 162.45,133.70\" id=\"27\" clip-path=\"url(#cl1_5)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"194.87,137.18 194.87,133.70\" id=\"28\" clip-path=\"url(#cl1_5)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"227.28,137.18 227.28,133.70\" id=\"29\" clip-path=\"url(#cl1_5)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"259.70,137.18 259.70,133.70\" id=\"30\" clip-path=\"url(#cl1_5)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"292.12,137.18 292.12,133.70\" id=\"31\" clip-path=\"url(#cl1_5)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"324.53,137.18 324.53,133.70\" id=\"32\" clip-path=\"url(#cl1_5)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"356.95,137.18 356.95,133.70\" id=\"33\" clip-path=\"url(#cl1_5)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"389.37,137.18 389.37,133.70\" id=\"34\" clip-path=\"url(#cl1_5)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <g clip-path=\"url(#cl1_5)\">\n      <text x=\"84.27\" y=\"148.77\" id=\"35\" font-size=\"9.00pt\" font-family=\"Arial\">1970<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_5)\">\n      <text x=\"116.68\" y=\"148.77\" id=\"36\" font-size=\"9.00pt\" font-family=\"Arial\">1975<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_5)\">\n      <text x=\"149.10\" y=\"148.77\" id=\"37\" font-size=\"9.00pt\" font-family=\"Arial\">1980<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_5)\">\n      <text x=\"181.52\" y=\"148.77\" id=\"38\" font-size=\"9.00pt\" font-family=\"Arial\">1985<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_5)\">\n      <text x=\"213.93\" y=\"148.77\" id=\"39\" font-size=\"9.00pt\" font-family=\"Arial\">1990<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_5)\">\n      <text x=\"246.35\" y=\"148.77\" id=\"40\" font-size=\"9.00pt\" font-family=\"Arial\">1995<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_5)\">\n      <text x=\"278.77\" y=\"148.77\" id=\"41\" font-size=\"9.00pt\" font-family=\"Arial\">2000<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_5)\">\n      <text x=\"311.19\" y=\"148.77\" id=\"42\" font-size=\"9.00pt\" font-family=\"Arial\">2005<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_5)\">\n      <text x=\"343.60\" y=\"148.77\" id=\"43\" font-size=\"9.00pt\" font-family=\"Arial\">2010<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_5)\">\n      <text x=\"376.02\" y=\"148.77\" id=\"44\" font-size=\"9.00pt\" font-family=\"Arial\">2015<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_5)\">\n      <text x=\"226.49\" y=\"168.72\" id=\"45\" font-size=\"10.50pt\" font-family=\"Arial\">Année<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_5)\">\n      <text transform=\"translate(21.30,141.14) rotate(-90)\" id=\"46\" font-size=\"10.50pt\" font-family=\"Arial\">Nombre de communes<\/text>\n    <\/g>\n    <defs>\n      <clipPath id=\"cl1_6\">\n        <rect x=\"0.00\" y=\"180.00\" width=\"432.00\" height=\"180.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id=\"cl1_7\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <defs>\n      <clipPath id=\"cl1_8\">\n        <rect x=\"61.76\" y=\"186.97\" width=\"363.26\" height=\"126.72\"/>\n      <\/clipPath>\n    <\/defs>\n    <circle cx=\"78.28\" cy=\"192.73\" r=\"1.87pt\" id=\"47\" clip-path=\"url(#cl1_8)\" fill=\"#FDE725\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FDE725\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"124.51\" cy=\"246.67\" r=\"1.87pt\" id=\"48\" clip-path=\"url(#cl1_8)\" fill=\"#FDE725\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FDE725\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"170.74\" cy=\"264.68\" r=\"1.87pt\" id=\"49\" clip-path=\"url(#cl1_8)\" fill=\"#FDE725\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FDE725\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"223.58\" cy=\"261.02\" r=\"1.87pt\" id=\"50\" clip-path=\"url(#cl1_8)\" fill=\"#FDE725\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FDE725\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"283.02\" cy=\"257.55\" r=\"1.87pt\" id=\"51\" clip-path=\"url(#cl1_8)\" fill=\"#FDE725\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FDE725\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"342.47\" cy=\"297.56\" r=\"1.87pt\" id=\"52\" clip-path=\"url(#cl1_8)\" fill=\"#FDE725\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FDE725\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"349.07\" cy=\"313.70\" r=\"1.87pt\" id=\"53\" clip-path=\"url(#cl1_8)\" fill=\"#FDE725\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FDE725\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"355.68\" cy=\"291.50\" r=\"1.87pt\" id=\"54\" clip-path=\"url(#cl1_8)\" fill=\"#FDE725\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FDE725\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"362.28\" cy=\"287.19\" r=\"1.87pt\" id=\"55\" clip-path=\"url(#cl1_8)\" fill=\"#FDE725\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FDE725\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"368.89\" cy=\"257.55\" r=\"1.87pt\" id=\"56\" clip-path=\"url(#cl1_8)\" fill=\"#FDE725\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FDE725\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"375.49\" cy=\"297.56\" r=\"1.87pt\" id=\"57\" clip-path=\"url(#cl1_8)\" fill=\"#FDE725\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FDE725\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"382.10\" cy=\"253.90\" r=\"1.87pt\" id=\"58\" clip-path=\"url(#cl1_8)\" fill=\"#FDE725\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FDE725\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"388.70\" cy=\"203.28\" r=\"1.87pt\" id=\"59\" clip-path=\"url(#cl1_8)\" fill=\"#FDE725\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FDE725\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"395.30\" cy=\"210.56\" r=\"1.87pt\" id=\"60\" clip-path=\"url(#cl1_8)\" fill=\"#FDE725\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FDE725\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"401.91\" cy=\"239.63\" r=\"1.87pt\" id=\"61\" clip-path=\"url(#cl1_8)\" fill=\"#FDE725\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FDE725\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"78.28\" cy=\"297.56\" r=\"1.87pt\" id=\"62\" clip-path=\"url(#cl1_8)\" fill=\"#21908C\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#21908C\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"124.51\" cy=\"236.05\" r=\"1.87pt\" id=\"63\" clip-path=\"url(#cl1_8)\" fill=\"#21908C\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#21908C\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"170.74\" cy=\"227.02\" r=\"1.87pt\" id=\"64\" clip-path=\"url(#cl1_8)\" fill=\"#21908C\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#21908C\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"223.58\" cy=\"250.97\" r=\"1.87pt\" id=\"65\" clip-path=\"url(#cl1_8)\" fill=\"#21908C\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#21908C\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"283.02\" cy=\"254.73\" r=\"1.87pt\" id=\"66\" clip-path=\"url(#cl1_8)\" fill=\"#21908C\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#21908C\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"342.47\" cy=\"287.19\" r=\"1.87pt\" id=\"67\" clip-path=\"url(#cl1_8)\" fill=\"#21908C\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#21908C\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"349.07\" cy=\"313.70\" r=\"1.87pt\" id=\"68\" clip-path=\"url(#cl1_8)\" fill=\"#21908C\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#21908C\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"355.68\" cy=\"313.70\" r=\"1.87pt\" id=\"69\" clip-path=\"url(#cl1_8)\" fill=\"#21908C\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#21908C\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"362.28\" cy=\"275.06\" r=\"1.87pt\" id=\"70\" clip-path=\"url(#cl1_8)\" fill=\"#21908C\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#21908C\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"368.89\" cy=\"313.70\" r=\"1.87pt\" id=\"71\" clip-path=\"url(#cl1_8)\" fill=\"#21908C\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#21908C\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"375.49\" cy=\"287.19\" r=\"1.87pt\" id=\"72\" clip-path=\"url(#cl1_8)\" fill=\"#21908C\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#21908C\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"382.10\" cy=\"313.70\" r=\"1.87pt\" id=\"73\" clip-path=\"url(#cl1_8)\" fill=\"#21908C\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#21908C\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"388.70\" cy=\"313.70\" r=\"1.87pt\" id=\"74\" clip-path=\"url(#cl1_8)\" fill=\"#21908C\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#21908C\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"395.30\" cy=\"297.56\" r=\"1.87pt\" id=\"75\" clip-path=\"url(#cl1_8)\" fill=\"#21908C\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#21908C\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"401.91\" cy=\"313.70\" r=\"1.87pt\" id=\"76\" clip-path=\"url(#cl1_8)\" fill=\"#21908C\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#21908C\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"78.28\" cy=\"287.19\" r=\"1.87pt\" id=\"77\" clip-path=\"url(#cl1_8)\" fill=\"#440154\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#440154\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"124.51\" cy=\"219.85\" r=\"1.87pt\" id=\"78\" clip-path=\"url(#cl1_8)\" fill=\"#440154\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#440154\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"170.74\" cy=\"307.94\" r=\"1.87pt\" id=\"79\" clip-path=\"url(#cl1_8)\" fill=\"#440154\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#440154\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"223.58\" cy=\"307.94\" r=\"1.87pt\" id=\"80\" clip-path=\"url(#cl1_8)\" fill=\"#440154\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#440154\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"283.02\" cy=\"313.70\" r=\"1.87pt\" id=\"81\" clip-path=\"url(#cl1_8)\" fill=\"#440154\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#440154\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"342.47\" cy=\"313.70\" r=\"1.87pt\" id=\"82\" clip-path=\"url(#cl1_8)\" fill=\"#440154\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#440154\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"349.07\" cy=\"313.70\" r=\"1.87pt\" id=\"83\" clip-path=\"url(#cl1_8)\" fill=\"#440154\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#440154\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"355.68\" cy=\"313.70\" r=\"1.87pt\" id=\"84\" clip-path=\"url(#cl1_8)\" fill=\"#440154\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#440154\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"362.28\" cy=\"313.70\" r=\"1.87pt\" id=\"85\" clip-path=\"url(#cl1_8)\" fill=\"#440154\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#440154\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"368.89\" cy=\"313.70\" r=\"1.87pt\" id=\"86\" clip-path=\"url(#cl1_8)\" fill=\"#440154\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#440154\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"375.49\" cy=\"313.70\" r=\"1.87pt\" id=\"87\" clip-path=\"url(#cl1_8)\" fill=\"#440154\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#440154\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"382.10\" cy=\"307.94\" r=\"1.87pt\" id=\"88\" clip-path=\"url(#cl1_8)\" fill=\"#440154\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#440154\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"388.70\" cy=\"313.70\" r=\"1.87pt\" id=\"89\" clip-path=\"url(#cl1_8)\" fill=\"#440154\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#440154\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"395.30\" cy=\"313.70\" r=\"1.87pt\" id=\"90\" clip-path=\"url(#cl1_8)\" fill=\"#440154\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#440154\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <circle cx=\"401.91\" cy=\"313.70\" r=\"1.87pt\" id=\"91\" clip-path=\"url(#cl1_8)\" fill=\"#440154\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#440154\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <polyline points=\"78.28,287.19 124.51,219.85 170.74,307.94 223.58,307.94 283.02,313.70 342.47,313.70 349.07,313.70 355.68,313.70 362.28,313.70 368.89,313.70 375.49,313.70 382.10,307.94 388.70,313.70 395.30,313.70 401.91,313.70\" id=\"92\" clip-path=\"url(#cl1_8)\" fill=\"none\" stroke-width=\"2.13396\" stroke=\"#440154\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"78.28,297.56 124.51,236.05 170.74,227.02 223.58,250.97 283.02,254.73 342.47,287.19 349.07,313.70 355.68,313.70 362.28,275.06 368.89,313.70 375.49,287.19 382.10,313.70 388.70,313.70 395.30,297.56 401.91,313.70\" id=\"93\" clip-path=\"url(#cl1_8)\" fill=\"none\" stroke-width=\"2.13396\" stroke=\"#21908C\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"78.28,192.73 124.51,246.67 170.74,264.68 223.58,261.02 283.02,257.55 342.47,297.56 349.07,313.70 355.68,291.50 362.28,287.19 368.89,257.55 375.49,297.56 382.10,253.90 388.70,203.28 395.30,210.56 401.91,239.63\" id=\"94\" clip-path=\"url(#cl1_8)\" fill=\"none\" stroke-width=\"2.13396\" stroke=\"#FDE725\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <defs>\n      <clipPath id=\"cl1_9\">\n        <rect x=\"0.00\" y=\"0.00\" width=\"432.00\" height=\"360.00\"/>\n      <\/clipPath>\n    <\/defs>\n    <polyline points=\"61.76,313.70 61.76,186.97\" id=\"95\" clip-path=\"url(#cl1_9)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"square\"/>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"41.94\" y=\"277.78\" id=\"96\" font-size=\"9.00pt\" font-family=\"Arial\">10<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"35.27\" y=\"243.32\" id=\"97\" font-size=\"9.00pt\" font-family=\"Arial\">100<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"35.27\" y=\"219.24\" id=\"98\" font-size=\"9.00pt\" font-family=\"Arial\">500<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"28.59\" y=\"208.86\" id=\"99\" font-size=\"9.00pt\" font-family=\"Arial\">1000<\/text>\n    <\/g>\n    <polyline points=\"58.28,273.48 61.76,273.48\" id=\"100\" clip-path=\"url(#cl1_9)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"58.28,239.02 61.76,239.02\" id=\"101\" clip-path=\"url(#cl1_9)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"58.28,214.94 61.76,214.94\" id=\"102\" clip-path=\"url(#cl1_9)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"58.28,204.57 61.76,204.57\" id=\"103\" clip-path=\"url(#cl1_9)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"61.76,313.70 425.03,313.70\" id=\"104\" clip-path=\"url(#cl1_9)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"square\"/>\n    <polyline points=\"91.49,317.18 91.49,313.70\" id=\"105\" clip-path=\"url(#cl1_9)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"124.51,317.18 124.51,313.70\" id=\"106\" clip-path=\"url(#cl1_9)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"157.53,317.18 157.53,313.70\" id=\"107\" clip-path=\"url(#cl1_9)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"190.56,317.18 190.56,313.70\" id=\"108\" clip-path=\"url(#cl1_9)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"223.58,317.18 223.58,313.70\" id=\"109\" clip-path=\"url(#cl1_9)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"256.61,317.18 256.61,313.70\" id=\"110\" clip-path=\"url(#cl1_9)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"289.63,317.18 289.63,313.70\" id=\"111\" clip-path=\"url(#cl1_9)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"322.65,317.18 322.65,313.70\" id=\"112\" clip-path=\"url(#cl1_9)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"355.68,317.18 355.68,313.70\" id=\"113\" clip-path=\"url(#cl1_9)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <polyline points=\"388.70,317.18 388.70,313.70\" id=\"114\" clip-path=\"url(#cl1_9)\" fill=\"none\" stroke-width=\"1.06698\" stroke=\"#000000\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\"/>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"78.14\" y=\"328.77\" id=\"115\" font-size=\"9.00pt\" font-family=\"Arial\">1970<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"111.16\" y=\"328.77\" id=\"116\" font-size=\"9.00pt\" font-family=\"Arial\">1975<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"144.19\" y=\"328.77\" id=\"117\" font-size=\"9.00pt\" font-family=\"Arial\">1980<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"177.21\" y=\"328.77\" id=\"118\" font-size=\"9.00pt\" font-family=\"Arial\">1985<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"210.23\" y=\"328.77\" id=\"119\" font-size=\"9.00pt\" font-family=\"Arial\">1990<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"243.26\" y=\"328.77\" id=\"120\" font-size=\"9.00pt\" font-family=\"Arial\">1995<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"276.28\" y=\"328.77\" id=\"121\" font-size=\"9.00pt\" font-family=\"Arial\">2000<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"309.30\" y=\"328.77\" id=\"122\" font-size=\"9.00pt\" font-family=\"Arial\">2005<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"342.33\" y=\"328.77\" id=\"123\" font-size=\"9.00pt\" font-family=\"Arial\">2010<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"375.35\" y=\"328.77\" id=\"124\" font-size=\"9.00pt\" font-family=\"Arial\">2015<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"223.15\" y=\"348.72\" id=\"125\" font-size=\"10.50pt\" font-family=\"Arial\">Année<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_9)\">\n      <text transform=\"translate(21.30,320.54) rotate(-90)\" id=\"126\" font-size=\"10.50pt\" font-family=\"Arial\">Nombre d'évènements<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"214.04\" y=\"187.33\" id=\"127\" font-size=\"10.50pt\" font-family=\"Arial\">Type d'évènement<\/text>\n    <\/g>\n    <circle cx=\"221.24\" cy=\"202.84\" r=\"1.87pt\" id=\"128\" clip-path=\"url(#cl1_9)\" fill=\"#FDE725\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#FDE725\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <line x1=\"215.48\" y1=\"202.84\" x2=\"227.00\" y2=\"202.84\" id=\"129\" clip-path=\"url(#cl1_9)\" stroke-width=\"2.13396\" stroke=\"#FDE725\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\" fill=\"#FFFFFF\" fill-opacity=\"1\"/>\n    <circle cx=\"221.24\" cy=\"217.24\" r=\"1.87pt\" id=\"130\" clip-path=\"url(#cl1_9)\" fill=\"#21908C\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#21908C\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <line x1=\"215.48\" y1=\"217.24\" x2=\"227.00\" y2=\"217.24\" id=\"131\" clip-path=\"url(#cl1_9)\" stroke-width=\"2.13396\" stroke=\"#21908C\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\" fill=\"#FFFFFF\" fill-opacity=\"1\"/>\n    <circle cx=\"221.24\" cy=\"236.55\" r=\"1.87pt\" id=\"132\" clip-path=\"url(#cl1_9)\" fill=\"#440154\" fill-opacity=\"1\" stroke-width=\"0.708661\" stroke=\"#440154\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/>\n    <line x1=\"215.48\" y1=\"236.55\" x2=\"227.00\" y2=\"236.55\" id=\"133\" clip-path=\"url(#cl1_9)\" stroke-width=\"2.13396\" stroke=\"#440154\" stroke-opacity=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"butt\" fill=\"#FFFFFF\" fill-opacity=\"1\"/>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"235.42\" y=\"207.14\" id=\"134\" font-size=\"9.00pt\" font-family=\"Arial\">Fusions<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"235.42\" y=\"221.54\" id=\"135\" font-size=\"9.00pt\" font-family=\"Arial\">Défusions<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"235.42\" y=\"234.37\" id=\"136\" font-size=\"9.00pt\" font-family=\"Arial\">Changements<\/text>\n    <\/g>\n    <g clip-path=\"url(#cl1_9)\">\n      <text x=\"235.42\" y=\"247.33\" id=\"137\" font-size=\"9.00pt\" font-family=\"Arial\">de code<\/text>\n    <\/g>\n  <\/g>\n<\/svg>\n","css":".tooltip_svg_1 {position:absolute;pointer-events:none;z-index:999;padding:5px;background:black;color:white;border-radius:2px 2px 2px 2px;}\n.hover_svg_1{fill:orange;stroke:gray;}\n.clicked_svg_1{fill:orange;stroke:gray;}","ui_html":"<div class='ggiraph-toolbar'><div class='ggiraph-toolbar-block shinyonly'><a class='ggiraph-toolbar-icon neutral' title='lasso selection' href='javascript:lasso_on(\"svg_1\", true, \"array_selected_svg_1\", \"clicked_svg_1\");'><svg width='15pt' height='15pt' viewBox='0 0 230 230'><g><ellipse ry='65.5' rx='86.5' cy='94' cx='115.5' stroke-width='20' fill='transparent'/><ellipse ry='11.500001' rx='10.5' cy='153' cx='91.5' stroke-width='20' fill='transparent'/><line y2='210.5' x2='105' y1='164.5' x1='96' stroke-width='20'/><\/g><\/svg><\/a><a class='ggiraph-toolbar-icon drop' title='lasso anti-selection' href='javascript:lasso_on(\"svg_1\", false, \"array_selected_svg_1\", \"clicked_svg_1\");'><svg width='15pt' height='15pt' viewBox='0 0 230 230'><g><ellipse ry='65.5' rx='86.5' cy='94' cx='115.5' stroke-width='20' fill='transparent'/><ellipse ry='11.500001' rx='10.5' cy='153' cx='91.5' stroke-width='20' fill='transparent'/><line y2='210.5' x2='105' y1='164.5' x1='96' stroke-width='20'/><\/g><\/svg><\/a><\/div><\/div>","uid":"svg_1","width":"75%","funname":"init_prop_svg_1","sel_array_name":"array_selected_svg_1","selected_class":"clicked_svg_1","tooltip_opacity":0.9,"tooltip_offx":10,"tooltip_offy":0,"zoom_max":1,"selection_type":"multiple"},"evals":[],"jsHooks":[]}</script>
+
+
+---
+background-size: 100%
+class: inverse, center, middle
+
+# 2. Le package COGugaison
+---
+
+# Les fonctions de COGugaison (1/2)
+- détecter le millésime du code officiel géographique d'une table de données communales : fonction **`COG_akinator`** et apparier une liste de communes d'une base de données avec celle du COG d'un millésime donné avec `apparier_COG`  
+
+--
+
+- visualiser les modifications communales (fusions, défusions, changements de codes ou de noms) qui ont eu lieu entre deux dates : `modifications_communales`
+
+--
+
+- visualiser sur un graphique interactif la trajectoire d'une commune donnée, c'est-à-dire toutes les modifications qui ont eu lieu depuis 1968 : **`trajectoire_commune`** et `trajectoire_commune_shiny` 
+
+--
+
+- transformer des tables de données numériques en géographie au premier janvier d'une année souhaitée : **`changement_COG_varNum`** 
+---
+# Les fonctions de COGugaison (2/2)
+- transformer des typologies de communes en géographie au premier janvier d'une année souhaitée en ayant le choix entre plusieurs hypothèses de classement en cas de fusion de communes de classes différentes (attribuer une unique classe à toutes les communes fusionnées, attribuer la classe qui contient le plus de population, définir une classe absorbante, une classe absorbée ou une classe spécifique aux regroupements de plusieurs communes de classes différentes) : **`changement_COG_typo`**. Il est également possible d'isoler dans une table les communes fusionnées appartenant à des classes différentes : `changement_COG_typo_details`
+
+--
+
+- permettre d'agréger les tables de données communales à de nombreux échelons supra-communaux administratifs (EPCI, arrondissements, cantons-villes, départements, régions) ou d'étude (bassins de vie, zones d'emploi, unités urbaines, aires urbaines) : **`nivsupra`**
+
+--
+
+- gérer des cas particuliers comme les codes Insee des communes corses (`modification_Corse`) ou des arrondissements municipaux de Paris, Lyon, et Marseille (**`enlever_PLM`**) ou encore l'ancienne commune de l'Oudon (`modification_Oudon`)
+---
+background-size: 100%
+class: inverse, center, middle
+
+# 3. Exemple 
+## Cartographier l'évolution du nombre de femmes et d'hommes par zone d'emploi de 1968 à aujourd'hui
+---
+background-image: url("img/fond_carte.png")
+background-size: 100%
+
+# Démarche
+
+**Objectif** : Réaliser des cartes du nombre de femmes et nombre de femmes pour 100 hommes de 1968 à aujourd'hui
+
+- Récupérer les données sur insee.fr et observer à quoi elles ressemblent
+
+- Transformer les données (changements de COG + agrégation à une échelle supra-communale adaptée)
+
+- Réaliser les cartes
+
+---
+# Téléchargeons les données...
+&lt;center&gt;&lt;a href="https://www.insee.fr/fr/statistiques/1893204" target="_self"&gt;&lt;img src="img/screenshot_insee.jpg" height="450px"&gt;&lt;/a&gt;&lt;/center&gt;
+---
+# Observons à quoi elles ressemblent...
+&lt;center&gt;&lt;img src="img/screenshot_fichier.jpg"&gt;&lt;/center&gt;
+
+---
+# Chargement des tables com1968...com2014
+
+```r
+library(readxl)
+
+recup_bdd &lt;- function(annee) {
+  bdd &lt;- read_excel("data/pop-sexe-age-quinquennal6814.xlsx", 
+    sheet = paste0("COM_", annee), skip = 13, col_names = TRUE, 
+    na = "") %&gt;%
+    mutate(codgeo = paste0(substr(DR, 1, 2), CR)) %&gt;%
+    filter(!is.na(get(paste0("ageq_rec01s1rpop", annee)))) %&gt;%
+    mutate(total_s1 = rowSums(select(., contains("s1"))), 
+    total_s2 = rowSums(select(., contains("s2")))) %&gt;%
+    select(codgeo, total_s1, total_s2)
+  return(bdd)
+}
+```
+
+--
+
+
+```r
+bdd_1975 &lt;- recup_bdd(1975)
+bdd_1999 &lt;- recup_bdd(1999)
+bdd_2014 &lt;- recup_bdd(2014)
+c(nrow(bdd_1975), nrow(bdd_1999), nrow(bdd_2014))
+```
+
+```
+## [1] 36413 36696 35906
+```
+---
+# En quel COG sont les données ?
+
+```r
+COG_akinator(bdd_1975$codgeo, donnees_insee = TRUE)
+```
+
+```
+# [1] "COG1975"
+```
+
+```r
+COG_akinator(bdd_1999$codgeo, donnees_insee = TRUE)
+```
+
+```
+# [1] "COG1999"
+```
+
+```r
+COG_akinator(bdd_2014$codgeo, donnees_insee = TRUE)
+```
+
+```
+# [1] "COG2016"
+```
+
+```r
+# REMARQUE :les recensements récents sont en COG n+2
+```
+---
+# Changements de COG
+
+```r
+# Transformer les tables en bons COG
+# idem pour bdd_1999 et bdd_2014
+bdd_1975_COG2016 &lt;- bdd_1975 %&gt;%
+  enlever_PLM() %&gt;% 
+  changement_COG_varNum(1975:2016, donnees_insee = TRUE)
+```
+
+
+
+--
+
+
+```r
+# Fusionner les tables
+bdd &lt;- plyr::join_all(list(COG2016 %&gt;% rename(codgeo = CODGEO) %&gt;% 
+              select(-POP), bdd_1975_COG2016, bdd_1999_COG2016,
+              bdd_2014_COG2016), type = "left", by = "codgeo") %&gt;%
+  setNames(nm = c("CODGEO", "LIBGEO", "total_s1_1975",
+                  "total_s2_1975", "total_s1_1999", "total_s2_1999",
+                  "total_s1_2014", "total_s2_2014"))
+```
+
+--
+
+
+```r
+# vérifier les totaux. Par exemple...
+sum(bdd_2014$total_s1, na.rm = TRUE) - sum(bdd$total_s1_2014, na.rm = TRUE)
+```
+
+```
+# [1] 0
+```
+---
+# Agrégation par Zone d'Emploi
+
+
+```r
+bdd[1, ]
+```
+
+```
+#   CODGEO                  LIBGEO total_s1_1975 total_s2_1975 total_s1_1999
+# 1  01001 L'Abergement-Clémenciat           210           240           384
+#   total_s2_1999 total_s1_2014 total_s2_2014
+# 1           332           385           380
+```
+
+```r
+bdd_ze &lt;- bdd %&gt;%
+  nivsupra(COG = 2016, nivsupra = "ZE2010") %&gt;% 
+  mutate(rapport_FH_1975 = 100 * total_s2_1975/total_s1_1975, 
+    rapport_FH_1999 = 100 * total_s2_1999/total_s1_1999, 
+    rapport_FH_2014 = 100 * total_s2_2014/total_s1_2014)
+```
+
+---
+# Aperçu du résultat (code en annexe)
+&lt;center&gt;&lt;img src="img/carte_animee.gif"&gt;&lt;/center&gt;
+
+---
+
+class: center, middle
+
+&lt;center&gt;&lt;img src="img/avatar.gif" height="300px"&gt;&lt;/center&gt;
+
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+
+&lt;a href="http://twitter.com/antuki13" class="social"&gt;&lt;i class="fa fa-twitter fa-2x" title="Mon twitter"&gt;&lt;/i&gt;@antuki13&lt;/a&gt;
+&lt;a href="http://github.com/antuki" class="social"&gt;&lt;i class="fa fa-github fa-2x" title="Mon github"&gt;&lt;/i&gt;antuki&lt;/a&gt;
+&lt;a href="http://antuki.github.io" class="social"&gt;&lt;i class="fa fa-bold fa-2x" title="Mon blog"&gt;&lt;/i&gt;antuki.github.io&lt;/a&gt;
+
+
+**Voir aussi : [antuki/CARTElette](https://github.com/antuki/CARTElette) pour la création de couches cartographiques à partir du COG et des couches IGN.**
+
+Diaporama créé avec le package R [**xaringan**](https://github.com/yihui/xaringan) avec le thème [rladies](https://alison.rbind.io/post/r-ladies-slides/).
+
+Avec également l'utilisation de [remark.js](https://remarkjs.com), [knitr](http://yihui.name/knitr), et [R Markdown](https://rmarkdown.rstudio.com).
+
+---
+background-size: 100%
+class: inverse, center, middle, annexe
+count: false
+
+
+# Annexes 
+---
+class: annexe
+count: false
+
+# Les données utiles dans COGugaison (1/4)
+&gt; - COG
+
+
+```r
+head(COG2017)
+```
+
+```
+##   CODGEO                  LIBGEO   POP
+## 1  01001 L'Abergement-Clémenciat   767
+## 2  01002   L'Abergement-de-Varey   241
+## 3  01004       Ambérieu-en-Bugey 14127
+## 4  01005     Ambérieux-en-Dombes  1619
+## 5  01006                 Ambléon   109
+## 6  01007                Ambronay  2615
+```
+
+---
+class: annexe
+count: false
+
+# Les données utiles dans COGugaison (2/4)
+&gt; - TABLES_PASSAGE
+
+
+```r
+head(PASSAGE_2015_2016_insee)
+```
+
+```
+##   cod2015 cod2016      annee typemodif ratio
+## 1   14697   14472 2016-01-01         c     1
+## 2   01015   01015 2016-01-01         f     1
+## 3   01340   01015 2016-01-01         f     1
+## 4   01080   01080 2016-01-01         f     1
+## 5   01119   01080 2016-01-01         f     1
+## 6   01176   01187 2016-01-01         f     1
+```
+---
+class: annexe
+count: false
+
+# Les données utiles dans COGugaison (3/4)
+
+```r
+head(table_supracom_2017)
+```
+
+```
+##   CODGEO                  LIBGEO DEP REG      EPCI NATURE_EPCI ARR   CV
+## 1  01001 L'Abergement-Clémenciat  01  84 200069193          CC 012 0108
+## 2  01002   L'Abergement-de-Varey  01  84 240100883          CC 011 0101
+## 3  01004       Ambérieu-en-Bugey  01  84 240100883          CC 011 0101
+## 4  01005     Ambérieux-en-Dombes  01  84 200042497          CC 012 0122
+## 5  01006                 Ambléon  01  84 200040350          CC 011 0104
+## 6  01007                Ambronay  01  84 240100883          CC 011 0101
+##   ZE2010 UU2010 TUU2014 TDUU2014 AU2010 TAU2014 CATAEU2010 BV2012
+## 1   8213  01000       0       05    997      00        120  01093
+## 2   8201  01000       0       04    002      09        112  01004
+## 3   8201  01302       3       32    002      09        112  01004
+## 4   8213  01000       0       06    002      09        112  69123
+## 5   8216  01000       0       03    998      00        300  01034
+## 6   8201  01000       0       07    002      09        112  01004
+```
+---
+class: annexe
+count: false
+
+# Les données utiles dans COGugaison (4/4)
+
+```r
+head(libelles_supracom_2017)
+```
+
+```
+##   NIVGEO CODGEO          LIBGEO NB_COM
+## 1    ARR    011          Belley    115
+## 2    ARR    012 Bourg-en-Bresse    201
+## 3    ARR    013             Gex     27
+## 4    ARR    014          Nantua     65
+## 5    ARR    021 Château-Thierry    108
+## 6    ARR    022            Laon    244
+```
+---
+class: annexe
+count: false
+
+# Cartes (1/6)
+
+
+```r
+# Créer thème personnalisé
+theme_map2 &lt;- function() {
+  cowplot::theme_map() %+replace%
+    theme(legend.position = c(0.95, 0.95),
+          legend.justification = c(0, 1),
+          legend.key.width = unit(1, "lines"),
+          legend.text = element_text(size = 10),
+          legend.title = element_text(size = 11), 
+          panel.grid.major = element_line(color = "transparent"), 
+          plot.title = element_text(size = 12, face = "bold"), 
+          plot.caption = element_text(size = 10, colour = "grey20"), 
+          plot.margin = unit(c(0, 0, 0, 0), "cm"))
+}
+```
+
+--
+
+
+```r
+# Charger la couche cartographique et la fusionner avec les données
+library(sf)
+couche_ze &lt;- st_read("data/couches_geo/ZE2010_2016_CARTElette.shp",
+                     stringsAsFactors = FALSE, quiet = TRUE) %&gt;% 
+  merge(bdd_ze,by="ZE2010",all.x = TRUE)
+```
+---
+class: annexe
+count: false
+
+# Cartes (2/6)
+
+```r
+ggplot2_rapportHF &lt;- function(annee, breaks, col){
+  carto &lt;- ggplot(couche_ze %&gt;%  mutate(typo = cut(get(paste0("rapport_FH_",
+                                                              annee)),
+              breaks = breaks, dig.lab = 4, include.lowest = TRUE))
+) +
+    geom_sf(aes(fill = typo), color = "black") +
+    geom_point(data=couche_ze %&gt;% st_centroid() %&gt;% st_coordinates() %&gt;%
+                as.data.frame(),
+               aes(x = X, y = Y,
+                   size= with(couche_ze, get(paste0("total_s2_", annee)))),
+               shape = 1, fill = NA, color = "grey", stroke = 1.5) +
+    scale_size(name = paste0("Nombre de\nfemmes en ", annee), range = c(0, 18),
+               breaks = c(50000, 100000, 500000),labels = c("50 000", "100 000",
+                                                      "500 000"))+ 
+    scale_fill_manual(name = paste0("Nombre de femmes pour\n100 hommes en ",
+                                    annee),
+                      values = col, na.value = "#303030")+
+    theme_map2() +
+    labs(
+      title = paste0("Répartition des femmes en France en ", annee),
+      caption = paste0("Insee, RP", annee, ". Fond antuki/CARTElette")
+    )  + guides(size = guide_legend(order = 1))
+  return(carto)
+}
+```
+---
+class: annexe
+count: false
+
+# Cartes (3/6)
+
+```r
+ggplot2_rapportHF(annee = 2014,
+                      breaks = quantile(couche_ze$rapport_FH_2014, 
+                                        seq(0, 1, 0.2), na.rm = TRUE) %&gt;%
+                        replace(2, 100),
+                      col = cartography::carto.pal(pal1 = "blue.pal", 
+                                      n1 = 1,
+                                      pal2 = "red.pal",
+                                      n2 = 4))
+```
+---
+class: annexe
+count: false
+
+# Cartes (4/6)
+&lt;img src="180706_RencontresR2018_COGugaison_files/figure-html/unnamed-chunk-21-1.svg" style="display: block; margin: auto;" /&gt;
+---
+class: annexe
+count: false
+
+# Cartes (5/6)
+
+```r
+library(magick)
+
+img &lt;- image_graph(3200, 2000, res = 96)
+
+out &lt;- lapply(c(1975, 1999, 2014), function(annee) {
+  p &lt;- ggplot2_rapportHF(annee = annee,
+                         breaks = quantile(c(couche_ze$rapport_FH_1975, 
+    couche_ze$rapport_FH_1999, couche_ze$rapport_FH_2014), 
+    seq(0, 1, 0.2), na.rm = TRUE) %&gt;% replace(2, 100),
+    col = cartography::carto.pal(pal1 = "blue.pal", 
+    n1 = 1, pal2 = "red.pal", n2 = 4))
+  print(p)
+})
+
+animation &lt;- image_animate(img, fps = 0.5)
+print(animation)
+image_write(animation, "carte_animee.gif")
+```
+---
+class: annexe
+count: false
+
+# Cartes (6/6)
+&lt;center&gt;&lt;img src="img/carte_animee.gif"&gt;&lt;/center&gt;
+
+---
+class: annexe
+count: false
+background-image: url("img/fond_carte2.png")
+background-size: 100%
+
+# Modifs communales depuis 1968 (1/6)
+
+**Objectif** : Réaliser une carte des communes ayant subi des modifications communales (fusions / défusions) depuis 1968
+
+- Créer un data.frame contenant la liste des codes communes de 1968 ainsi qu'une autre colonne appelée "typo" contenant les mêmes informations
+
+- Transformer le data.frame en géographie au 01/01/2018 grâce à la fonction `changement_COG_typo` en recodant en trois modalités la variable "typo" : communes inchangées, communes fusionnées et communes défusionnées
+
+- Observer le résultat de cette typologie ainsi créée sur une carte
+
+---
+class: annexe
+count: false
+
+# Modifs communales depuis 1968 (2/6)
+- Typologie et défusions = **FACILE**
+- *Question : Quelles typologies pour les communes défusionnées en COG 2014 ?*
+&lt;center&gt;&lt;img src="img/typo_defusion2.png" height="300px"&gt;&lt;/center&gt;
+---
+class: annexe
+count: false
+
+# Modifs communales depuis 1968 (3/6)
+- Typologie et fusions = **DIFFICILE**
+- *Question : Quelle typologie pour la commune fusionnée en COG 2012 ?*
+&lt;center&gt;&lt;img src="img/typo_fusion2.png" height="300px"&gt;&lt;/center&gt;
+---
+class: annexe
+count: false
+
+# Modifs communales depuis 1968 (4/6)
+&lt;center&gt;&lt;img src="img/typo_fusion2.png" height="120px"&gt;&lt;/center&gt;
+**changement_COG_typo** : Transformer des typologies   
+ -  `methode_classe_fusion` : pour toutes les communes qui ont fusionné entre 2 dates indiquer comme classe la valeur inscrite dans "mot_fusion" y compris pour les fusions de communes de mêmes classes
+--
+
+ - `methode_difference` : créer une classe spécifique dont le nom est contenu dans mot_difference (par défaut)
+--
+ 
+ - `methode_max_pop` : attribuer la classe contenant le maximum de population des communes fusionnées
+--
+ 
+ - `methode_classe_absorbante` : attribuer la classe dite absorbante à toute commune fusionnée contenant au moins une ancienne commune appartenant à cette classe absorbante
+--
+ 
+ - `methode_classe_absorbee` : ne pas tenir compte de cette classe dite "absorbée" pour toute commune fusionnée contenant au moins une ancienne commune appartenant à cette classe absorbée
+
+---
+class: annexe
+count: false
+
+# Modifs communales depuis 1968 (5/6)
+
+
+```r
+table_modif_com &lt;- cbind(COG1968, COG1968[, 1])[, c(1,4)] %&gt;%
+  setNames(c("CODGEO", "typo"))
+table_modif_com[1, ]
+```
+
+```
+##   CODGEO  typo
+## 1  01001 01001
+```
+--
+
+
+```r
+table_modif_com &lt;- changement_COG_typo(table_modif_com,
+methode_fusion = "methode_classe_fusion", mot_fusion = "communes fusionnées",
+annees = 1968:2018, codgeo_entree = "CODGEO", typos = "typo", donnees_insee = F)
+```
+--
+
+
+```r
+table_modif_com$typo[table_modif_com$typo %in% (
+  table_modif_com$typo[duplicated(table_modif_com$typo) &amp; 
+                         table_modif_com$typo != "communes fusionnées"])] &lt;-
+  "communes défusionnées"
+
+table_modif_com$typo[which(!table_modif_com$typo %in% c("communes fusionnées", 
+"communes défusionnées"))] &lt;- "communes inchangées"
+
+table_modif_com[1, ]
+```
+
+```
+##   CODGEO                typo
+## 1  01001 communes inchangées
+```
+
+---
+class: annexe
+count: false
+
+# Modifs communales depuis 1968 (6/6)
+
+
+&lt;img src="180706_RencontresR2018_COGugaison_files/figure-html/unnamed-chunk-29-1.svg" style="display: block; margin: auto;" /&gt;
+    </textarea>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
