@@ -1,0 +1,219 @@
+---
+title: "Kim Antunez"
+author: Kim Antunez
+date: "`r Sys.Date()`"
+output:
+  pagedown::html_resume:
+   css: 
+   - resume.css
+   self_contained: false
+---
+
+Aside
+================================================================================
+
+<center>[<font size ="5"><i class="fa fa-file-pdf-o"></i> Version PDF</font>](http://google.fr)</center>
+
+</br>
+</br>
+
+<center>![Kim Antunez](photo2.png){width=80%}</center>
+
+
+Informations {#contact}
+--------------------------------------------------------------------------------
+
+- Née le 08/02/1993
+</br>
+</br>
+
+### Réseaux sociaux 
+
+<p><center>![antuki](avatar_antuki_v2_small.png){width=20%}</center></p>
+
+- [<i class="fa fa-twitter"></i>](https://twitter.com/antuki13) antuki13
+- [<i class="fa fa-github"></i>](https://github.com/antuki) github.com/antuki
+- [<i class="fab fa-blogger-b"></i>](http://antuki.github.io) antuki.github.io
+- [<i class="fab fa-linkedin"></i>](https://www.linkedin.com/in/kantunez/) kantunez
+
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+créé avec le package R [**pagedown**](https://github.com/rstudio/pagedown).
+
+
+
+Main
+================================================================================
+
+Kim Antunez {#title}
+--------------------------------------------------------------------------------
+
+### Attachée statisticienne de l'Insee  {#description}
+
+Expérience professionnelle {data-icon=suitcase}
+--------------------------------------------------------------------------------
+
+### Chargée d'études statistiques dans les domaines de la santé et du social
+
+DREES, Ministère des Solidarités et de la santé
+
+Paris (75)
+
+Actuel -  2017
+
+- Rédaction d'études à caractère statistique principalement à partir du Baromètre d'opinion de la DREES
+- Développement d'une application web (via R : shiny) pour diffuser les données de l'enquête en open-data
+- Membre du comité de suivi « Passage de SAS à R » pour la DREES
+
+### Chargée de mission « Observation des territoires »
+
+Commissariat Général à l’Egalité des Territoires (CGET)
+
+Saint-Denis (93)
+
+2017 - 2015 
+
+- Expertise sur les sources de données publiques territorialisées
+- Analyses statistiques et spatiales (autocorrélation, modèles spatiaux, typologies, cartes...)
+- Aide à la gestion de la base de données du site de l’Observatoire des Territoires (plus de 500 indicateurs)
+- Travaux transversaux sur l’égalité et l’aménagement des territoires (réforme territoriale, égalité F/H...)
+
+Formation {data-icon=user-graduate}
+--------------------------------------------------------------------------------
+
+### Master 2 de statistique-économétrie
+
+Ensai – Université de Rennes 1
+
+Rennes (35)
+
+2015 -  2014
+
+Spécialité statistique publique, parcours Études statistiques, mention bien. 
+
+*Enseignements approfondis :* économétrie, statistique et économétrie spatiales,
+séries temporelles, marché du travail, analyse des politiques publiques...
+
+###  Attachée statisticienne de l’Insee formée à l’Ensai
+
+École Nationale de la Statistique et de l’Analyse de l’Information
+
+Bruz (35)
+
+2014 -  2012
+
+#### Diplômes obtenus en parallèle
+
+-  *Licence 3 Économie*, Université Paris Dauphine, option sciences des organisations et des marchés, mention économie appliquée, 2014.
+- *Licence 3 Mathématiques*, Université de Rennes 1, option sciences, technologies, santé, mention mathématiques, 2013
+
+
+### Classes préparatoires aux grandes écoles
+
+Lycée Pierre Corneille
+
+Rouen (76)
+
+2012 -  2010
+
+Filières MPSI puis MP (Mathématiques, Physique)
+
+Expérience d'enseignement {data-icon=chalkboard-teacher}
+--------------------------------------------------------------------------------
+
+### Langage <i class="fab fa-r-project" style="color:#175954;"></i>
+
+N/A
+
+N/A
+
+N/A
+
+- *Formation Spatial data and cartography*, [satRday Paris 2019](https://paris2019.satrdays.org/)
+- *Formation Geovisualisation*, école d'été 2018 « Massive spatial data » du [LabEx DynamiTe](http://labex-dynamite.com/en/labex-events/summer-schools/summer-school-2018/summer-school-2018-programme/)
+- Formations R dispensées au CGET en 2016-2017.
+- Chargée de TD d'introduction à R à l'ENSAE en 2016
+
+::: aside
+
+#### Logiciels et langages informatiques
+
+- *Statistique* : <i class="fab fa-r-project" style="color:#444;"></i>, SAS
+(maîtrise), SPAD (notions), Stata (notions)
+- *Informatique* : UML, C++, Java, développement mobile (Android), SQL
+- *Bureautique* : Suite Microsoft Office (dont langage Visual Basic) et équivalents LibreOffice, LaTeX
+- *Graphisme* : Photofiltre, Adobe illustrator
+
+#### Langues
+
+- *Anglais* : avancé </br>
+(TOEIC, 880 et IELTS, C2)
+- *Allemand* : intermédiaire </br>
+(WiDaF, C1)
+- *Espagnol* : notions
+
+:::
+
+### Divers
+
+N/A
+
+N/A
+
+N/A
+
+- Chargée de TD d'introduction à LaTeX à l'ENSAE en 2015
+
+
+
+Principales productions {data-icon=pencil-alt}
+--------------------------------------------------------------------------------
+
+### Analyse spatiale
+
+N/A
+
+N/A
+
+N/A
+
+- *« Disparités et discontinuités territoriales dans la France des nouvelles régions : une lecture multiscalaire et multidimensionnelle »*, [Revue Economie et Statistique n° 497-498-2017](https://www.insee.fr/fr/statistiques/3317894?sommaire=3317927), Insee, 2018. Avec Brigitte Baccaïni, Marianne Guérois et Ronan Ysebaert.
+- *« Prix des terrains : une décroissance avec la distance au centre plus lente dans les grandes agglomérations »*, [Datalab n°12](https://www.statistiques.developpement-durable.gouv.fr/fileadmin/documents/Produits_editoriaux/Publications/Datalab/2017/datalab-12-prix-terrains-localisation.pdf), CGDD, 2017.
+- *« Emploi et Territoires »*, [En Bref #30](https://www.cget.gouv.fr/sites/cget.gouv.fr/files/atoms/files/en-bref-30-cget-12-2016.pdf), CGET, 2017. Avec Mathieu Garnier et Louise Haran.
+- *« Diagnostics de qualité de vie. Prendre en compte les préférences des populations »*
+[Revue de l'OFCE](https://www.cairn.info/revue-de-l-ofce-2016-1-page-49.htm), 2016. Avec Louise Haran et Vivien Roussez
+- *« Combattre les inégalités Femmes-Hommes dans les territoires fragiles »*, Collection [En Bref #6](https://www.cget.gouv.fr/sites/cget.gouv.fr/files/atoms/files/bref-06-cget-10-2015.pdf) CGET, 2015. Avec Brigitte Baccaïni, Nadia Bentchicou, Eric Lenoir et Alice Takacs.
+
+
+
+### Baromètre d'opinion de la DREES
+
+N/A
+
+N/A
+
+N/A
+
+
+ - *« Les Français et les congés de maternité et paternité : opinion et recours »*, [Études et Résultats n°1098](https://drees.solidarites-sante.gouv.fr/IMG/pdf/er1098.pdf), DREES, 2019. Avec Guillemette Buisson.
+- *« L'opinion des Français sur l'accès aux soins et l'Assurance maladie »*, [Les dépenses de santé en 2017](https://drees.solidarites-sante.gouv.fr/IMG/pdf/eclairages-3.pdf), DREES, 2018.
+- *« En 2017, des Français moins inquiets et davantage demandeurs d’intervention publique »*, [Synthèse des résultats de l'enquête 2017](https://drees.solidarites-sante.gouv.fr/IMG/pdf/synthese_2018_resultats_barometre_drees.pdf), DREES, 2018. Avec Adrien Papuchon.
+
+
+
+### Autres productions
+
+N/A
+
+N/A
+
+N/A
+
+
+ - [*Application web Baromètre*]() (R Shiny) : graphiques interactifs des résultats du Baromètre d'opinion de la DREES, à paraître (avril 2019).
+ - [*COGugaison*](https://github.com/antuki/COGugaison) : Package R utile à la gestion des codes officiels géographiques (COG) dans les tables de données géographiques 
+ - [*CARTElette*](https://github.com/antuki/CARTElette) : Package R de création de couches cartographiques à partir du code officiel géographique (COG) et des couches IGN 
+
+ 
