@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Dealing with the change of administrative divisions over time with <i class="fab  fa-r-project "></i></title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Kim Antunez antuki13" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies-fonts.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <link href="libs/vis/vis.css" rel="stylesheet" />
+    <script src="libs/vis/vis.min.js"></script>
+    <script src="libs/visNetwork-binding/visNetwork.js"></script>
+    <link rel="stylesheet" href="antuki.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Dealing with the change of administrative divisions over time with <i class="fab  fa-r-project "></i>
+### Kim Antunez</br><small class='fab fa-twitter-square' title='Mon twitter'></small> antuki13
+### useR! 2019 - Toulouse, France </br>11 July 2019
+
+---
+
+
+
+
+
+
+## Administrative divisions... 
+
+.left-column[
+&lt;img src="img/millefeuille2.png" height="60px"&gt;&lt;/img&gt;
+&lt;img src="img/millefeuille1.png" height="400px"&gt;
+]
+.right-column[
+&lt;center&gt;The French territorial « mille-feuille »&lt;/center&gt;&lt;/br&gt;
+&lt;center&gt;&lt;img src="img/carte_millefeuille_v2.png"&gt;&lt;/center&gt;
+]
+
+---
+## ... change over time
+&lt;center&gt;&lt;img src="img/map_fusions.png" height="500px"&gt;&lt;/center&gt;
+
+
+
+
+---
+.pull-left[
+### See modifications over the years
+]
+
+.pull-right[
+ &lt;center&gt;&lt;img src="img/trajectoires.png" height="100px"&gt;&lt;/center&gt;
+]
+
+
+
+<i class="fas  fa-exclamation-triangle " style="color:red;"></i> All functions and parameters are translated from French for this presentation
+
+
+```r
+municipality_evolution_graph(code = "76108", year = 2014) # uses {visNetwork}
+```
+
+&lt;center&gt;&lt;img src="img/trajectoire_commune.png" height="100px"&gt;&lt;/center&gt;
+
+
+```r
+evol &lt;- municipalities_evolutions(begin_date="01-01-2011", end_date="01-01-2014")
+```
+
+
+```r
+grep("(76095)|(76108)", evol$mergers, value = TRUE)
+```
+
+
+```
+## 2012-01-01: Bois-Guillaume-Bihorel (76108) is a merger of Bihorel (76095),
+Bois-Guillaume (76108).
+```
+
+
+```r
+grep("(76095)|(76108)", evol$divisions, value = TRUE)
+```
+
+
+```
+## 2014-01-01: Bois-Guillaume (76108) divided into Bois-Guillaume (76108), Bihorel
+## (76095).
+```
+
+---
+
+.pull-left[
+### Guess the year of a database
+]
+
+.pull-right[
+&lt;center&gt;&lt;img src="img/tableau_year.png" height="100px"&gt;&lt;/center&gt;
+]
+
+
+```r
+head(db, 2)
+```
+
+```
+##    code      men   women
+## 1 01001 385.0000 380.000
+## 2 01002 142.6132 113.107
+```
+
+
+```r
+OGC_guess(db$code) # guesses the year of the Official Geographic Code (OGC)
+```
+
+
+
+
+```
+## [1] "2016"
+```
+
+
+```r
+codes &lt;- c("99086", db$code[-1]) # creates a vector of ID of municipalities
+merge_OGC(codes = codes, OGC = 2016)$not_in_db # ID not in the db
+```
+
+
+```
+## 01001
+```
+
+
+```r
+merge_OGC(codes = codes, OGC = 2016)$not_in_OGC # ID not in the OGC
+```
+
+
+```
+## 99086
+```
+
+---
+.pull-left[
+### Change the year of a database
+
+* **qualitative variable** [character]&lt;/br&gt; 
+<i class="fas  fa-hand-point-right " style="color:#562457;"></i> See `change_OGC_typology`
+
+    + *divisions * <i class="fas  fa-caret-right " style="color:#88398A;"></i> easy: copy the lines
+    + *mergers * <i class="fas  fa-caret-right " style="color:#88398A;"></i> several hypotheses: assign the class that contains the most population, define an absorbent or absorbed class...
+]
+
+.pull-right[
+ &lt;center&gt;&lt;img src="img/tableau_year2.png" height="100px"&gt;&lt;/center&gt;
+
+    
+* **quantitative variable** [numeric]&lt;/br&gt;
+<i class="fas  fa-hand-point-right " style="color:#562457;"></i> See `change_OGC_numeric` 
+
+    + *mergers * <i class="fas  fa-caret-right " style="color:#88398A;"></i> easy: sum the lines 
+    + *divisions * <i class="fas  fa-caret-right " style="color:#88398A;"></i> divide lines proportionally to population
+
+]
+    
+
+```r
+nrow(db)
+```
+
+```
+## [1] 35887
+```
+
+
+```r
+db_2019 &lt;- db %&gt;% # changes the year of a numeric variable (from 2016 to 2019)
+  change_OGC_numeric(2016:2019)
+```
+
+
+
+
+```r
+str(db_2019)
+```
+
+```
+## 'data.frame':	34972 obs. of  3 variables:
+##  $ code : chr  "01001" "01002" "01004" "01005" ...
+##  $ men  : num  385 142.6 6778.5 819 54.5 ...
+##  $ women: num  380 113.1 7246.5 783.9 49.5 ...
+```
+---
+.pull-left[
+### Aggregate a database
+]
+
+.pull-right[
+&lt;center&gt;&lt;img src="img/agreger.png" height="100px"&gt;&lt;/center&gt;
+]
+
+
+
+```r
+db_dep &lt;- db_2019 %&gt;% # aggregates the database (municipalities -&gt; départements)
+  aggregate_OGC(OGC = 2019, administrative_division = "DEP")
+```
+
+
+
+
+```r
+str(db_dep)
+```
+
+```
+## 'data.frame':	100 obs. of  4 variables:
+##  $ DEP   : chr  "01" "02" "03" "04" ...
+##  $ LIBGEO: chr  "Ain" "Aisne" "Allier" "Alpes-de-Haute-Provence" ...
+##  $ men   : num  309198 262693 163759 78600 68309 ...
+##  $ women : num  316839 276817 179006 83124 71588 ...
+```
+
+
+```r
+DEP_sf &lt;- left_join(DEP_sf,db_dep,by=c("DEP"="DEP")) %&gt;%
+  mutate(prop=100*men/(men+women))
+plot(DEP_sf %&gt;% select(prop))
+```
+
+&lt;center&gt;&lt;img src="img/draw_prop.png" height="200px"&gt;&lt;/center&gt;
+
+---
+
+## Future improvements? 
+
+* **Create new functions**
+    +  add your own geographical levels
+    +  add your own distribution keys
+    
+* **Expand to other countries**
+    +  in Europe : Nomenclature of Territorial Units for Statistics (NUTS)
+    +  identify common functionnalities VS local (French!) specificities
+
+* **Reach non R-users**
+    +  Shiny Apps
+    +  API
+
+---
+
+class: center, middle
+
+&lt;center&gt;&lt;img src="img/avatar.png" height="300px"&gt;&lt;/center&gt;
+
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+
+&lt;a href="http://twitter.com/antuki13" class="social"&gt;&lt;i class="fa fa-twitter fa-2x" title="Mon twitter"&gt;&lt;/i&gt;@antuki13&lt;/a&gt;
+&lt;a href="http://github.com/antuki" class="social"&gt;&lt;i class="fa fa-github fa-2x" title="Mon github"&gt;&lt;/i&gt;antuki&lt;/a&gt;
+&lt;a href="http://antuki.github.io" class="social"&gt;&lt;i class="fa fa-bold fa-2x" title="Mon blog"&gt;&lt;/i&gt;antuki.github.io&lt;/a&gt;
+
+
+**Packages on github: [antuki/COGugaison](https://github.com/antuki/COGugaison) and [antuki/CARTElette](https://github.com/antuki/CARTElette).**
+
+Slides created with R package [**xaringan**](https://github.com/yihui/xaringan) with the [R-Ladies theme](https://alison.rbind.io/post/r-ladies-slides/).
+
+Also with [remark.js](https://remarkjs.com), [knitr](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
