@@ -1,6 +1,7 @@
 @page{
   size: letter portrait;
-  margin: 0.5in 0.1in 0.5in 0.25in; /* MODIF le 1er : 1 le 2e : 0.5 et le 3e : 1*/
+  /*size: A4; */
+  margin: 0.6in 0.1in 0.6in 0.25in; /* MODIF le 1er : 1 le 2e : 0.5 et le 3e : 1*/
 }
 
 *{
@@ -12,8 +13,8 @@
   --margin-right: 0.5in;
   --margin-left: 0.25in;
   --content-width: calc(var(--page-width) - var(--margin-right) - var(--margin-left));
-  --root-font-size: 12.65pt; /*MODIF 12*/
-  --sidebar-width: 15rem;/*MODIF 15rem*/
+  --root-font-size: 12.6pt; /*MODIF 12*/
+  --sidebar-width: 14rem;/*MODIF 15rem*/
   --sidebar-background-color: #f3f8fb; /*MODIF #f2f2f2; #2aa198*/
   --main-width: calc(var(--content-width) - var(--sidebar-width));
   --decorator-horizontal-margin: 0.2in;
@@ -28,7 +29,7 @@
   --decorator-border: 1px solid #ccc;
 
   --row-blocks-padding-top: 0.5rem;
-  --date-block-width: 0.7in;
+  --date-block-width: 0.7in; 
 
   --main-blocks-title-icon-offset-left: calc(-17pt - 0.25 * var(--root-font-size));
 
@@ -84,7 +85,7 @@ img{
 #main{
   width: var(--main-width);
   padding: 0 0.25in 0 0.25in;
-  font-size: 0.7rem;
+  font-size: 0.73rem; /*0.7*/
   float: left;
 }
 
@@ -96,7 +97,7 @@ img{
 .aside{
   width: var(--sidebar-width);
   padding: 0.6in var(--sidebar-horizontal-padding);
-  font-size: 0.8rem;
+  font-size: 0.8rem; /*0.8*/
   float: right;
   position: absolute;
   right: 0;
@@ -130,7 +131,7 @@ h1, h2{
 }
 
 #title h3{
-    font-size: 0.8rem;
+    font-size: 1.0rem; /*0.8*/ /*non utilisé*/
 }
 
 /* nouveautés Kim*/
@@ -139,7 +140,7 @@ h1, h2{
 }
 
 #description h3{
-    font-size: 0.9rem;
+    font-size: 1rem; /* Attachée statisticienne de l'Insee*/
     font-family: "Georgia", sans-serif;
     text-transform: none;
     color: #444;
@@ -222,7 +223,7 @@ h1, h2{
   flex: 0 0 var(--date-block-width);
   padding-top: calc(var(--row-blocks-padding-top) + 0.25rem) !important;
   padding-right: var(--decorator-horizontal-margin);
-  font-size: 0.7rem;
+  font-size: 0.75rem; /*0.7*/
   text-align: right;
   line-height: 1;
   max-width: var(--date-block-width);
@@ -300,7 +301,7 @@ h1, h2{
 }
 
 .details h3{
-  font-size: 0.8rem;
+  font-size: 0.85rem; /*0.8*/ /*titres des postes*/
 }
 
 .main-block:not(.concise) .details div{
@@ -319,7 +320,7 @@ h1, h2{
 
 .details .place{
   float: left;
-  font-size: 0.75rem;
+  font-size: 0.75rem; /*0.7*/
 }
 
 .details .location{

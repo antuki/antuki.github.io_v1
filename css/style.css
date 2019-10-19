@@ -26,7 +26,7 @@ h4,
 h5,
 h6,
 p,
-blockquote,
+/*blockquote,*/
 pre,
 a,
 abbr,
@@ -946,6 +946,8 @@ a.article-title:hover {
   border-bottom: 1px solid #eceff2;
   padding: 10px 0;
 }
+
+
 .article-entry blockquote {
   position: relative;
   font-family: Georgia, "Times New Roman", "Microsoft Yahei", serif;
@@ -974,6 +976,7 @@ a.article-title:hover {
   content: "â€”";
   padding: 0 0.5em;
 }
+
 .article-entry .pullquote {
   text-align: left;
   width: 45%;
@@ -2281,3 +2284,4 @@ border-radius: 20px;
 .hljs-strong {
   font-weight: bold;
 }
+

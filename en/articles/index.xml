@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
     <copyright>antuki. Powered by [blogdown](https://github.com/rstudio/blogdown)/[Hugo](//gohugo.io). Theme based on Icarus by [PPOffice](http://github.com/ppoffice) with modifications by [antuki](https://antuki.github.io).</copyright>
-    <lastBuildDate>Sun, 08 Oct 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 19 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/en/articles/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Looking for a summer 2020 internship</title>
+      <link>/en/2019/10/19/emojifont/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/en/2019/10/19/emojifont/</guid>
+      <description>🎤Looking for a 2020 Summer #internship in #DataScience. Back in school @ENSAEparis after five years of professional experience in French official statistics. Preferably in 🇺🇸🇨🇦🇦🇺 Many personal #rstats projects on my github and LinkedIn. https://t.co/NZP2I7o2LT pic.twitter.com/8PXNbCUFvV
+&amp;mdash; antuki (@antuki13) September 21, 2019  After 5 years of professional experience in official statistics, I am back in school to complete my training to become a Senior Officer for the French National Institute of Statistics and Economic Studies (INSEE), after recently passing the internal competitive exam.</description>
+    </item>
     
     <item>
       <title>First post full of love :blue_heart: thanks to emojifont package</title>

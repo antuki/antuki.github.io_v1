@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R fun on antuki.github.io</title>
+    <link>/tags/r-fun/</link>
+    <description>Recent content in R fun on antuki.github.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language>
+    <copyright>antuki. Powered by [blogdown](https://github.com/rstudio/blogdown)/[Hugo](//gohugo.io). Theme based on Icarus by [PPOffice](http://github.com/ppoffice) with modifications by [antuki](https://antuki.github.io).</copyright>
+    <lastBuildDate>Sat, 19 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/r-fun/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Looking for a summer 2020 internship</title>
+      <link>/2019/10/19/emojifont/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/10/19/emojifont/</guid>
+      <description>After 5 years of professional experience in official statistics, I am back in school to complete my training to become a Senior Officer for the French National Institute of Statistics and Economic Studies (INSEE), after recently passing the internal competitive exam.
+I am looking for a 10-12-week summer internship in Data Science starting in June 2020 to improve and further develop my knowledge in IT implementation of statistical methods and tools.</description>
+    </item>
+    
+  </channel>
+</rss>

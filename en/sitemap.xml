@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/en/2019/10/19/emojifont/</loc>
+    <lastmod>2019-10-19T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="/2019/10/19/emojifont/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/en/2019/10/19/emojifont/"
+                />
+  </url>
+  
+  <url>
     <loc>/en/2017/10/08/emojifont/</loc>
     <lastmod>2017-10-08T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -19,7 +34,7 @@
   
   <url>
     <loc>/en/articles/</loc>
-    <lastmod>2017-10-08T00:00:00+00:00</lastmod>
+    <lastmod>2019-10-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
@@ -122,7 +137,7 @@
   
   <url>
     <loc>/en/</loc>
-    <lastmod>2017-10-08T00:00:00+00:00</lastmod>
+    <lastmod>2019-10-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
     <xhtml:link
                 rel="alternate"
