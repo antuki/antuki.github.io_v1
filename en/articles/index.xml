@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
     <copyright>antuki. Powered by [blogdown](https://github.com/rstudio/blogdown)/[Hugo](//gohugo.io). Theme based on Icarus by [PPOffice](http://github.com/ppoffice) with modifications by [antuki](https://antuki.github.io).</copyright>
-    <lastBuildDate>Sat, 19 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/en/articles/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Your opinion of the packages COGugaison and CARTElette</title>
+      <link>/en/2019/11/08/opinion_package/</link>
+      <pubDate>Fri, 08 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/en/2019/11/08/opinion_package/</guid>
+      <description>This survey aims to better know the users of the two R packages COGugaison and CARTElette, which make possible to manage the evolution of administrative divisions over time in France, in databases and map layers.
+Thank you very much for your participation which will contribute to the improvement of these packages!
+Access the form
+</description>
+    </item>
     
     <item>
       <title>Looking for a summer 2020 internship</title>

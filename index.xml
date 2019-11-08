@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
     <copyright>antuki. Powered by [blogdown](https://github.com/rstudio/blogdown)/[Hugo](//gohugo.io). Theme based on Icarus by [PPOffice](http://github.com/ppoffice) with modifications by [antuki](https://antuki.github.io).</copyright>
-    <lastBuildDate>Sat, 19 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Votre opinion sur les packages COGugaison et CARTElette</title>
+      <link>/2019/11/08/opinion_package/</link>
+      <pubDate>Fri, 08 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/11/08/opinion_package/</guid>
+      <description>Cette enquête a pour objectif de mieux connaître les utilisateurs des deux packages R COGugaison et CARTElette qui permettent de gérer l’évolution des divisions administratives dans le temps en France dans les bases de données et couches cartographiques.
+Merci beaucoup pour votre participation qui contribuera à l’amélioration de ces packages !
+Accéder au formulaire
+</description>
+    </item>
     
     <item>
       <title>A la recherche d&#39;un stage pour l&#39;été 2020</title>
